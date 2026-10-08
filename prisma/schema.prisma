@@ -1,0 +1,122 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  name          String?
+  role          Role      @default(ADMIN)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  vehicles      Vehicle[]
+  leads         Lead[]
+
+  @@map("users")
+}
+
+model Vehicle {
+  id              String        @id @default(cuid())
+  slug            String        @unique
+  title           String
+  brand           String
+  model           String
+  year            Int
+  yearModel       Int
+  price           Decimal       @db.Decimal(12, 2)
+  fipePrice       Decimal?      @db.Decimal(12, 2)
+  mileage         Int
+  fuelType        FuelType
+  transmission    Transmission
+  color           String
+  doors           Int
+  description     String?
+  images          String[]
+  features        String[]
+  category        Category      @default(LEVE)
+  status          VehicleStatus @default(AVAILABLE)
+  location        String        @default("BALNEÁRIO CAMBORIÚ, SC")
+  isFeatured      Boolean       @default(false)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  authorId        String
+  author          User          @relation(fields: [authorId], references: [id])
+  leads           Lead[]
+
+  @@index([brand, model])
+  @@index([category, status])
+  @@index([price])
+  @@index([isFeatured])
+  @@map("vehicles")
+}
+
+model Lead {
+  id          String    @id @default(cuid())
+  name        String
+  phone       String
+  email       String?
+  message     String?
+  vehicleId   String?
+  vehicle     Vehicle?  @relation(fields: [vehicleId], references: [id])
+  userId      String?
+  user        User?     @relation(fields: [userId], references: [id])
+  status      LeadStatus @default(NEW)
+  source      String    @default("WEBSITE")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([vehicleId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("leads")
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+}
+
+enum Category {
+  PREMIUM
+  LEVE
+  MOTOS
+}
+
+enum VehicleStatus {
+  AVAILABLE
+  RESERVED
+  SOLD
+  DRAFT
+}
+
+enum FuelType {
+  GASOLINE
+  ETHANOL
+  FLEX
+  DIESEL
+  HYBRID
+  ELECTRIC
+}
+
+enum Transmission {
+  MANUAL
+  AUTOMATIC
+  CVT
+  DSG
+  PDK
+  SEQUENTIAL
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  NEGOTIATING
+  CLOSED_WON
+  CLOSED_LOST
+}
