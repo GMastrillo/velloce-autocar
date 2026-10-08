@@ -20,8 +20,8 @@ export async function GET(request: NextRequest) {
       isFeatured: searchParams.get("isFeatured") ? searchParams.get("isFeatured") === "true" : undefined,
       page: searchParams.get("page") ? Number(searchParams.get("page")) : 1,
       limit: searchParams.get("limit") ? Number(searchParams.get("limit")) : 12,
-      sortBy: (searchParams.get("sortBy") as any) || "createdAt",
-      sortOrder: (searchParams.get("sortOrder") as any) || "desc",
+      sortBy: (searchParams.get("sortBy") as VehicleFilters["sortBy"]) || "createdAt",
+      sortOrder: (searchParams.get("sortOrder") as VehicleFilters["sortOrder"]) || "desc",
     };
 
     const result = getFilteredVehicles(filters);

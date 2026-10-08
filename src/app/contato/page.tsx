@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MapPin, Clock, ShoppingCart, DollarSign, Users, ExternalLink } from "lucide-react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { LeadForm } from "@/components/forms/LeadForm";
@@ -87,7 +88,7 @@ export default function ContatoPage() {
                     <ExternalLink className="w-4 h-4 text-text-muted group-hover:text-accent-gold transition-smooth" />
                   </a>
 
-                  <a
+                  <Link
                     href="/#grupos-vip"
                     className="p-4 rounded-xl bg-bg-card border border-border-subtle hover:border-tricolore-red transition-smooth flex items-center justify-between group"
                   >
@@ -105,7 +106,7 @@ export default function ContatoPage() {
                       </div>
                     </div>
                     <ExternalLink className="w-4 h-4 text-text-muted group-hover:text-tricolore-red transition-smooth" />
-                  </a>
+                  </Link>
                 </div>
               </div>
 

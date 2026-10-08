@@ -29,31 +29,35 @@ export function IntroCinematic({ onComplete, forceShow = false }: IntroCinematic
 
   // Check URL query (?intro=true) or session persistence
   useEffect(() => {
+    let shouldOpen = false;
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
       if (params.get("intro") === "true") {
-        setProgress(0);
-        setIsExiting(false);
-        setIsOpen(true);
-        return;
+        shouldOpen = true;
       }
     }
 
     const seen = sessionStorage.getItem("velloce_premium_intro_v3");
-    if (seen && !forceShow) {
+    if (seen && !forceShow && !shouldOpen) {
       onComplete?.();
       return;
     }
 
-    setIsExiting(false);
-    setIsOpen(true);
+    const timer = setTimeout(() => {
+      setIsExiting(false);
+      setIsOpen(true);
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [forceShow, onComplete]);
 
   // Refined sub-bass acoustic twin-turbo resonance sound (Web Audio API)
   const playSubtleIgnitionSound = () => {
     if (!soundEnabled) return;
     try {
-      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      const AudioContextClass =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
       if (!AudioContextClass) return;
 
       if (!audioCtxRef.current) {
@@ -108,7 +112,6 @@ export function IntroCinematic({ onComplete, forceShow = false }: IntroCinematic
   useEffect(() => {
     if (!isOpen || isExiting) return;
 
-    setProgress(0);
     const startTime = Date.now();
     const duration = 2800; // 2.8s
 

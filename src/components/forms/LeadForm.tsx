@@ -61,8 +61,9 @@ export function LeadForm({ vehicle, onSuccess, title, subtitle }: LeadFormProps)
         window.open(data.data.whatsappUrl, "_blank");
       }
       onSuccess?.();
-    } catch (err: any) {
-      setError(err.message || "Falha ao enviar. Tente novamente via WhatsApp.");
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Falha ao enviar. Tente novamente via WhatsApp.";
+      setError(msg);
     } finally {
       setLoading(false);
     }

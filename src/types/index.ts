@@ -28,8 +28,8 @@ export interface Vehicle {
   model: string;
   year: number;
   yearModel: number;
-  price: number | any;
-  fipePrice?: number | any | null;
+  price: number;
+  fipePrice?: number | null;
   mileage: number;
   fuelType: FuelType;
   transmission: Transmission;
