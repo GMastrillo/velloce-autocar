@@ -8,13 +8,9 @@ import {
   ArrowRight, 
   Phone, 
   Car, 
-  Gauge, 
-  MapPin, 
   CheckCircle2, 
   Sparkles,
-  ExternalLink,
   Users,
-  Compass,
   Plane,
   Ship,
   Bike,
@@ -23,6 +19,7 @@ import {
 } from "lucide-react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { VehicleCard } from "@/components/vehicle/VehicleCard";
+import { BentoGridShowroom } from "@/components/vehicle/BentoGridShowroom";
 import { Button } from "@/components/ui/Button";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { getFeaturedVehicles, MOCK_VEHICLES } from "@/data/vehicles";
@@ -44,12 +41,11 @@ export default function HomePage() {
           1. HERO SECTION CINEMATOGRÁFICA
       ======================================================== */}
       <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-bg-primary pt-8 pb-16">
-        {/* Background Gradients & Textures */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-tricolore-red/10 via-transparent to-transparent blur-3xl pointer-events-none" />
-          <div className="absolute top-1/3 -left-40 w-[500px] h-[500px] bg-tricolore-green/5 blur-3xl pointer-events-none" />
-          <div className="absolute inset-0 bg-[radial-gradient(#22262F_1px,transparent_1px)] [background-size:32px_32px] opacity-25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-bg-primary/80" />
+        {/* Iluminação de Estúdio & Texturas Neutras */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-gradient-to-b from-white/[0.04] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(#22262F_1px,transparent_1px)] [background-size:32px_32px] opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/40 to-transparent" />
         </div>
 
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -224,6 +220,11 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
+          1.5. BENTO GRID SHOWROOM ASSIMÉTRICO (PADRÃO 21ST.DEV)
+      ======================================================== */}
+      <BentoGridShowroom vehicles={featuredVehicles} />
+
+      {/* ========================================================
           2. CENTRAL DE ATENDIMENTO DIRETO (COMPRAS & VENDAS)
       ======================================================== */}
       <section className="py-8 bg-bg-surface border-y border-border-subtle">
@@ -244,7 +245,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <span className="text-[11px] font-mono uppercase tracking-wider text-tricolore-green font-bold">
-                      👉 Compre Aqui com Especialista
+                      Compre Aqui com Especialista
                     </span>
                     <h3 className="font-display font-bold text-xl text-text-primary group-hover:text-tricolore-green transition-smooth">
                       Falar com Marcos (o Neni)
@@ -272,7 +273,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <span className="text-[11px] font-mono uppercase tracking-wider text-accent-gold font-bold">
-                      👉 Venda Aqui Seu Veículo
+                      Venda Aqui Seu Veículo
                     </span>
                     <h3 className="font-display font-bold text-xl text-text-primary group-hover:text-accent-gold transition-smooth">
                       Central de Compras & Avaliação
