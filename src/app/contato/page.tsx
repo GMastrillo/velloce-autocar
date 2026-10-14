@@ -2,7 +2,7 @@ import Link from "next/link";
 import { MapPin, Clock, ShoppingCart, DollarSign, Users, ExternalLink } from "lucide-react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { LeadForm } from "@/components/forms/LeadForm";
-import { COMMERCIAL_LINKS, VIP_GROUPS } from "@/data/commercial";
+import { COMMERCIAL_LINKS } from "@/data/commercial";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata = {

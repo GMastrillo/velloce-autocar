@@ -3,8 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X, Car, Shield, Zap, MapPin, Phone, Mail } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Menu, X, Zap, Phone, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 import { COMMERCIAL_LINKS } from "@/data/commercial";

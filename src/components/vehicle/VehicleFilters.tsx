@@ -205,7 +205,7 @@ export function VehicleFiltersComponent({ initialFilters = {}, totalCount, onFil
           className="h-10 px-6 font-semibold shrink-0 gap-2 shadow-sm rounded-xl cursor-pointer"
         >
           <Filter className="w-4 h-4" />
-          <span>Filtrar</span>
+          <span>Filtrar ({totalCount})</span>
         </Button>
 
         {/* Botão Limpar Filtros */}

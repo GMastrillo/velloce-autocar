@@ -44,7 +44,7 @@ export default async function VeiculosPage({ searchParams }: PageProps) {
     limit: 12,
   };
 
-  const { data: vehicles, total, page, totalPages } = getFilteredVehicles(filters);
+  const { data: vehicles, total } = getFilteredVehicles(filters);
 
   return (
     <MainLayout>

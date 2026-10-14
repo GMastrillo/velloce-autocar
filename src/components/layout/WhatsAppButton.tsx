@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MessageCircle, X, ShoppingCart, DollarSign, Users, ChevronRight, Phone } from "lucide-react";
+import { MessageCircle, X, ShoppingCart, DollarSign, Users, ChevronRight } from "lucide-react";
 import { COMMERCIAL_LINKS } from "@/data/commercial";
 import { cn } from "@/lib/utils";
 

@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ShieldCheck, MapPin, Award, CheckCircle2, Phone, ArrowRight } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";

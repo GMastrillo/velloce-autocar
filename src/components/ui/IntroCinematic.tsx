@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { Volume2, VolumeX, ShieldCheck } from "lucide-react";
 
@@ -52,7 +52,7 @@ export function IntroCinematic({ onComplete, forceShow = false }: IntroCinematic
   }, [forceShow, onComplete]);
 
   // Refined sub-bass acoustic twin-turbo resonance sound (Web Audio API)
-  const playSubtleIgnitionSound = () => {
+  const playSubtleIgnitionSound = useCallback(() => {
     if (!soundEnabled) return;
     try {
       const AudioContextClass =
@@ -94,9 +94,9 @@ export function IntroCinematic({ onComplete, forceShow = false }: IntroCinematic
     } catch {
       // Audio autoplay policy fallback
     }
-  };
+  }, [soundEnabled]);
 
-  const handleEnter = () => {
+  const handleEnter = useCallback(() => {
     if (isExiting) return;
     playSubtleIgnitionSound();
     setIsExiting(true);
@@ -106,7 +106,7 @@ export function IntroCinematic({ onComplete, forceShow = false }: IntroCinematic
       setIsOpen(false);
       onComplete?.();
     }, 700);
-  };
+  }, [isExiting, onComplete, playSubtleIgnitionSound]);
 
   // Continuous progress timer (2.8 seconds)
   useEffect(() => {
@@ -127,7 +127,7 @@ export function IntroCinematic({ onComplete, forceShow = false }: IntroCinematic
     }, 25);
 
     return () => clearInterval(interval);
-  }, [isOpen, isExiting]);
+  }, [isOpen, isExiting, handleEnter]);
 
   // Keyboard accessibility: any key enters immediately
   useEffect(() => {
@@ -137,7 +137,7 @@ export function IntroCinematic({ onComplete, forceShow = false }: IntroCinematic
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isOpen, isExiting]);
+  }, [isOpen, handleEnter]);
 
   if (!isOpen) return null;
 

@@ -10,21 +10,16 @@ import {
   Fuel, 
   Settings, 
   MapPin, 
-  Share2, 
-  FileCheck2, 
-  Truck,
-  Sparkles,
   Phone
 } from "lucide-react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { LeadForm } from "@/components/forms/LeadForm";
-import { getVehicleBySlug, MOCK_VEHICLES } from "@/data/vehicles";
+import { getVehicleBySlug } from "@/data/vehicles";
 import { 
   formatCurrency, 
   formatNumber, 
-  getCategoryLabel, 
   getFuelTypeLabel, 
   getTransmissionLabel, 
   getWhatsAppUrl 
