@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
+  innerClassName?: string;
   spotlightColor?: string;
   size?: number;
 }
@@ -13,6 +14,7 @@ interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export function SpotlightCard({
   children,
   className = "",
+  innerClassName = "",
   spotlightColor = "rgba(212, 175, 55, 0.12)",
   size = 600,
   ...props
@@ -46,7 +48,7 @@ export function SpotlightCard({
           background: `radial-gradient(${size}px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
         }}
       />
-      <div className="relative z-20 h-full">{children}</div>
+      <div className={cn("relative z-20 h-full", innerClassName)}>{children}</div>
     </div>
   );
 }

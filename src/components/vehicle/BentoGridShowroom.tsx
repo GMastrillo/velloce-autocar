@@ -23,10 +23,12 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
 
   return (
     <section className="relative py-16 sm:py-24 bg-bg-primary overflow-hidden">
-      {/* Luz sutil de estúdio */}
+      {/* Luz neutra de estúdio no topo */}
       <div className="absolute top-0 right-1/4 w-[600px] h-[300px] bg-gradient-to-b from-white/[0.03] to-transparent blur-2xl pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+        
+        {/* Cabeçalho da Seção */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <LuxuryHeading
             subtitle="Curadoria Exclusiva • Balneário Camboriú & Caxias do Sul"
@@ -42,17 +44,18 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
           </Link>
         </div>
 
-        {/* Bento Grid Assimétrico de Hiperluxo */}
+        {/* Bento Grid Editorial de Hiperluxo */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           
-          {/* Card Principal (Hero Bento - 8 colunas) */}
-          <div className="lg:col-span-8">
+          {/* Card Principal: Hero Bento (8 colunas) */}
+          <div className="lg:col-span-8 flex flex-col">
             <SpotlightCard
               spotlightColor="rgba(212, 175, 55, 0.15)"
-              className="group relative min-h-[480px] sm:min-h-[520px] flex flex-col justify-between p-6 sm:p-10 overflow-hidden"
+              className="p-0 rounded-2xl bg-bg-card border-border-subtle hover:border-white/20 transition-all duration-300 flex-1 flex flex-col overflow-hidden"
+              innerClassName="flex flex-col h-full"
             >
-              {/* Imagem de Fundo de Alta Resolução com Reflexo de Estúdio */}
-              <div className="absolute inset-0 z-0">
+              {/* Estágio Visual: Foto Nítida com Badges Flutuantes */}
+              <div className="relative w-full h-64 sm:h-80 md:h-96 overflow-hidden bg-bg-surface shrink-0">
                 {heroVehicle.images[0] && (
                   <Image
                     src={heroVehicle.images[0]}
@@ -63,47 +66,57 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
                     priority
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/60 to-black/30" />
-                <div className="absolute inset-0 bg-gradient-to-r from-bg-primary/80 via-transparent to-transparent hidden sm:block" />
-              </div>
+                {/* Vinheta suave de estúdio (sem bloquear a foto) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-bg-card via-transparent to-black/40 pointer-events-none" />
 
-              {/* Top Meta: Badges e Localização */}
-              <div className="relative z-20 flex flex-wrap items-center justify-between gap-3">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10">
+                {/* Badge Superior Esquerdo */}
+                <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 shadow-lg">
                   <span className="w-2 h-2 rounded-full bg-tricolore-green animate-pulse" />
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-white">
-                    Destaque do Showroom
-                  </span>
-                  <span className="text-white/40">•</span>
-                  <span className="font-mono text-[11px] text-accent-gold font-medium">
-                    {heroVehicle.location}
+                  <span className="font-mono text-xs uppercase tracking-wider text-white font-medium">
+                    Destaque • {heroVehicle.location}
                   </span>
                 </div>
 
+                {/* Badge Superior Direito: Economia FIPE */}
                 {savingsPercent > 0 && (
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-tricolore-red/20 border border-tricolore-red/40 text-tricolore-white">
+                  <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-tricolore-red/50 text-white shadow-lg">
                     <TrendingDown className="w-3.5 h-3.5 text-tricolore-red" />
-                    <span className="font-mono text-xs font-bold tabular-nums">
+                    <span className="font-mono text-xs font-bold text-white tabular-nums">
                       -{savingsPercent}% FIPE
                     </span>
                   </div>
                 )}
               </div>
 
-              {/* Bottom Meta: Título, Specs e Ações Comerciais */}
-              <div className="relative z-20 space-y-6 pt-12">
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-[0.25em] text-text-secondary">
-                    {heroVehicle.brand} • {heroVehicle.year}/{heroVehicle.yearModel}
-                  </span>
-                  <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-text-primary tracking-tight mt-1 leading-tight">
-                    {heroVehicle.title}
-                  </h3>
+              {/* Dock de Informações: Estrutura Editorial com Alto Contraste */}
+              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+                
+                {/* Linha 1: Título e Preço */}
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
+                  <div>
+                    <span className="font-mono text-xs uppercase tracking-[0.25em] text-accent-gold">
+                      {heroVehicle.brand} • {heroVehicle.year}/{heroVehicle.yearModel}
+                    </span>
+                    <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-text-primary tracking-tight mt-1 leading-tight">
+                      {heroVehicle.title}
+                    </h3>
+                  </div>
+
+                  <div className="text-left sm:text-right shrink-0">
+                    {heroVehicle.fipePrice && (
+                      <span className="font-mono text-xs text-text-muted line-through block tabular-nums">
+                        FIPE: {formatCurrency(heroVehicle.fipePrice)}
+                      </span>
+                    )}
+                    <span className="font-mono text-2xl sm:text-3xl font-black text-white tabular-nums">
+                      {formatCurrency(heroVehicle.price)}
+                    </span>
+                  </div>
                 </div>
 
-                {/* Grid de Métricas Tabulares */}
-                <div className="grid grid-cols-3 gap-3 sm:gap-4 py-4 border-y border-white/10">
-                  <div>
+                {/* Linha 2: Grade de Métricas em Blocos com Fundo Escuro */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-4 border-y border-white/10">
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
                     <span className="block font-mono text-[10px] uppercase tracking-wider text-text-muted">
                       Quilometragem
                     </span>
@@ -111,7 +124,8 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
                       {formatNumber(heroVehicle.mileage)} km
                     </span>
                   </div>
-                  <div>
+
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
                     <span className="block font-mono text-[10px] uppercase tracking-wider text-text-muted">
                       Câmbio
                     </span>
@@ -119,33 +133,37 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
                       {heroVehicle.transmission}
                     </span>
                   </div>
-                  <div>
+
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
                     <span className="block font-mono text-[10px] uppercase tracking-wider text-text-muted">
                       Combustível
                     </span>
-                    <span className="font-mono text-sm sm:text-base font-bold text-white">
+                    <span className="font-mono text-sm sm:text-base font-bold text-white truncate block">
                       {heroVehicle.fuelType}
+                    </span>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span className="block font-mono text-[10px] uppercase tracking-wider text-text-muted">
+                      Cor Externa
+                    </span>
+                    <span className="font-mono text-sm sm:text-base font-bold text-white truncate block">
+                      {heroVehicle.color}
                     </span>
                   </div>
                 </div>
 
-                {/* Preços e Ações */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-                  <div>
-                    {heroVehicle.fipePrice && (
-                      <span className="font-mono text-xs text-text-muted line-through block tabular-nums">
-                        FIPE: {formatCurrency(heroVehicle.fipePrice)}
-                      </span>
-                    )}
-                    <span className="font-display text-2xl sm:text-3xl font-black text-text-primary tabular-nums">
-                      {formatCurrency(heroVehicle.price)}
-                    </span>
+                {/* Linha 3: Barra de Ação & Status */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-1">
+                  <div className="flex items-center gap-2 text-xs font-mono text-tricolore-green">
+                    <ShieldCheck className="w-4 h-4 shrink-0" />
+                    <span>Laudo cautelar 100% aprovado • Pronta entrega</span>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <Link
                       href={`/veiculos/${heroVehicle.slug}`}
-                      className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/15 text-white font-mono text-xs uppercase tracking-wider transition-all"
+                      className="flex-1 sm:flex-initial px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-mono text-xs uppercase tracking-wider transition-colors text-center"
                     >
                       Dossiê Completo
                     </Link>
@@ -155,22 +173,26 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 rounded-xl bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-neutral-200 transition-colors flex items-center gap-2 shadow-lg"
+                      className="flex-1 sm:flex-initial px-6 py-3 rounded-xl bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 shadow-lg"
                     >
                       <MessageCircle className="w-4 h-4 text-tricolore-green" />
                       <span>Negociar</span>
                     </a>
                   </div>
                 </div>
+
               </div>
             </SpotlightCard>
           </div>
 
           {/* Coluna de Micro-Cards Assimétricos (4 colunas) */}
-          <div className="lg:col-span-4 flex flex-col gap-6 justify-between">
+          <div className="lg:col-span-4 flex flex-col gap-6">
             
             {/* Micro-Card 1: Margem FIPE & Oportunidades */}
-            <SpotlightCard className="p-6 flex-1 flex flex-col justify-between">
+            <SpotlightCard
+              className="flex-1 flex flex-col p-6 rounded-2xl bg-bg-card border-border-subtle"
+              innerClassName="flex flex-col justify-between h-full"
+            >
               <div className="flex items-start justify-between gap-4">
                 <div className="p-3 rounded-xl bg-accent-gold/10 border border-accent-gold/20 text-accent-gold">
                   <TrendingDown className="w-5 h-5" />
@@ -193,7 +215,10 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
             </SpotlightCard>
 
             {/* Micro-Card 2: Laudo Cautelar 100% Aprovado */}
-            <SpotlightCard className="p-6 flex-1 flex flex-col justify-between">
+            <SpotlightCard
+              className="flex-1 flex flex-col p-6 rounded-2xl bg-bg-card border-border-subtle"
+              innerClassName="flex flex-col justify-between h-full"
+            >
               <div className="flex items-start justify-between gap-4">
                 <div className="p-3 rounded-xl bg-tricolore-green/10 border border-tricolore-green/20 text-tricolore-green">
                   <ShieldCheck className="w-5 h-5" />
@@ -213,7 +238,10 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
             </SpotlightCard>
 
             {/* Micro-Card 3: Grupos VIP & Eixo BC • CXS */}
-            <SpotlightCard className="p-6 flex-1 flex flex-col justify-between bg-gradient-to-br from-bg-surface to-bg-card border-border-active">
+            <SpotlightCard
+              className="flex-1 flex flex-col p-6 rounded-2xl bg-bg-card border-border-subtle"
+              innerClassName="flex flex-col justify-between h-full"
+            >
               <div className="flex items-start justify-between gap-4">
                 <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-white">
                   <Users className="w-5 h-5" />
