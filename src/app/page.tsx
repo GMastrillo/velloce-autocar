@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { 
   ShieldCheck, 
   TrendingDown, 
@@ -24,7 +23,7 @@ import { Button } from "@/components/ui/Button";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { getFeaturedVehicles, MOCK_VEHICLES } from "@/data/vehicles";
 import { COMMERCIAL_LINKS, VIP_GROUPS } from "@/data/commercial";
-import { formatCurrency } from "@/lib/utils";
+import { VelloceInspectionTerminal } from "@/components/home/VelloceInspectionTerminal";
 
 import { IntroController } from "@/components/ui/IntroController";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
@@ -33,7 +32,6 @@ import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 export default function HomePage() {
   const featuredVehicles = getFeaturedVehicles();
-  const heroVehicle = featuredVehicles[0] || MOCK_VEHICLES[0];
 
   return (
     <MainLayout>
@@ -143,71 +141,10 @@ export default function HomePage() {
               </Reveal>
             </div>
 
-            {/* Destaque Visual / Oportunidade em Cartaz */}
+            {/* Cockpit Interativo: Terminal de Curadoria & Raio-X Pericial */}
             <div className="lg:col-span-5 relative w-full">
-              <Reveal direction="zoom" delay={200}>
-                <div className="relative mx-auto max-w-md lg:max-w-none">
-                  <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-tricolore-green/20 via-border-active to-tricolore-red/20 blur-xl opacity-70 hidden sm:block" />
-                  
-                  <div className="relative rounded-2xl overflow-hidden bg-bg-card border border-border-subtle shadow-2xl animate-float-slow animate-shimmer">
-                    <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-bg-primary/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-border-subtle shadow-sm">
-                      <span className="w-2 h-2 rounded-full bg-tricolore-red animate-ping" />
-                      <span className="font-mono text-xs font-semibold text-text-primary">
-                        OPORTUNIDADE DO DIA
-                      </span>
-                    </div>
-
-                    <div className="relative h-60 sm:h-80 w-full overflow-hidden bg-bg-surface group">
-                      <Image
-                        src={heroVehicle.images[0]}
-                        alt={heroVehicle.title}
-                        fill
-                        priority
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        sizes="(max-width: 1024px) 100vw, 500px"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-bg-card via-transparent to-transparent" />
-                    </div>
-
-                    <div className="p-4 sm:p-6 space-y-4">
-                      <div>
-                        <div className="flex items-center justify-between text-xs font-mono text-text-secondary mb-1">
-                          <span>{heroVehicle.location}</span>
-                          <span>{heroVehicle.year}/{heroVehicle.yearModel}</span>
-                        </div>
-                        <h2 className="font-display font-bold text-lg sm:text-xl text-text-primary">
-                          {heroVehicle.title}
-                        </h2>
-                      </div>
-
-                      <div className="flex items-end justify-between pt-2 border-t border-border-subtle">
-                        <div>
-                          {heroVehicle.fipePrice && (
-                            <p className="text-xs text-text-muted line-through font-mono tabular-nums">
-                              FIPE: {formatCurrency(heroVehicle.fipePrice)}
-                            </p>
-                          )}
-                          <p className="font-mono font-extrabold text-xl sm:text-2xl text-text-primary tracking-tight tabular-nums">
-                            {formatCurrency(heroVehicle.price)}
-                          </p>
-                        </div>
-
-                        {heroVehicle.fipePrice && (
-                          <div className="px-2 py-1 rounded bg-tricolore-green/15 border border-tricolore-green/30 text-tricolore-green text-[11px] sm:text-xs font-bold font-mono text-right tabular-nums">
-                            Economia: {formatCurrency(Number(heroVehicle.fipePrice) - Number(heroVehicle.price))}
-                          </div>
-                        )}
-                      </div>
-
-                      <Link href={`/veiculos/${heroVehicle.slug}`} className="block">
-                        <Button variant="secondary" className="w-full justify-center">
-                          <span>Ver Ficha Técnica & Laudo</span>
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+              <Reveal direction="zoom" delay={150}>
+                <VelloceInspectionTerminal />
               </Reveal>
             </div>
 
