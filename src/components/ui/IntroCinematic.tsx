@@ -174,8 +174,11 @@ export function IntroCinematic({ onComplete, forceShow = false }: IntroCinematic
           <span>{soundEnabled ? "ÁUDIO: ATIVO" : "ÁUDIO: MUDO"}</span>
         </button>
 
-        <span className="text-[10px] font-mono tracking-widest text-zinc-600">
+        <span className="hidden sm:block text-[10px] font-mono tracking-widest text-zinc-600">
           CLIQUE EM QUALQUER LUGAR PARA ENTRAR
+        </span>
+        <span className="sm:hidden text-[9px] font-mono tracking-wider text-zinc-600">
+          TOQUE P/ ENTRAR
         </span>
       </div>
 
@@ -199,7 +202,7 @@ export function IntroCinematic({ onComplete, forceShow = false }: IntroCinematic
 
         {/* Nome da Marca com Espaçamento Editorial */}
         <div className="space-y-3">
-          <h1 className="font-display font-black text-4xl sm:text-6xl tracking-[0.35em] text-white uppercase leading-none">
+          <h1 className="font-display font-black text-3xl sm:text-6xl tracking-[0.25em] sm:tracking-[0.35em] text-white uppercase leading-none">
             VELLOCE
           </h1>
 

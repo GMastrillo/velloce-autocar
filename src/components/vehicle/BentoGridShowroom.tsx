@@ -55,7 +55,7 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
               innerClassName="flex flex-col h-full"
             >
               {/* Estágio Visual: Foto Nítida com Badges Flutuantes */}
-              <div className="relative w-full h-64 sm:h-80 md:h-96 overflow-hidden bg-bg-surface shrink-0">
+              <div className="relative w-full h-56 sm:h-80 md:h-96 overflow-hidden bg-bg-surface shrink-0">
                 {heroVehicle.images[0] && (
                   <Image
                     src={heroVehicle.images[0]}
@@ -70,18 +70,18 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-bg-card via-transparent to-black/40 pointer-events-none" />
 
                 {/* Badge Superior Esquerdo */}
-                <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 shadow-lg">
-                  <span className="w-2 h-2 rounded-full bg-tricolore-green animate-pulse" />
-                  <span className="font-mono text-xs uppercase tracking-wider text-white font-medium">
+                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20 flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 shadow-lg">
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-tricolore-green animate-pulse" />
+                  <span className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-white font-medium">
                     Destaque • {heroVehicle.location}
                   </span>
                 </div>
 
                 {/* Badge Superior Direito: Economia FIPE */}
                 {savingsPercent > 0 && (
-                  <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-tricolore-red/50 text-white shadow-lg">
-                    <TrendingDown className="w-3.5 h-3.5 text-tricolore-red" />
-                    <span className="font-mono text-xs font-bold text-white tabular-nums">
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-tricolore-red/50 text-white shadow-lg">
+                    <TrendingDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-tricolore-red" />
+                    <span className="font-mono text-[10px] sm:text-xs font-bold text-white tabular-nums">
                       -{savingsPercent}% FIPE
                     </span>
                   </div>
@@ -89,81 +89,81 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
               </div>
 
               {/* Dock de Informações: Estrutura Editorial com Alto Contraste */}
-              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+              <div className="p-4 sm:p-8 flex-1 flex flex-col justify-between space-y-4 sm:space-y-6">
                 
                 {/* Linha 1: Título e Preço */}
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-4">
                   <div>
-                    <span className="font-mono text-xs uppercase tracking-[0.25em] text-accent-gold">
+                    <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-accent-gold">
                       {heroVehicle.brand} • {heroVehicle.year}/{heroVehicle.yearModel}
                     </span>
-                    <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-text-primary tracking-tight mt-1 leading-tight">
+                    <h3 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-text-primary tracking-tight mt-1 leading-tight">
                       {heroVehicle.title}
                     </h3>
                   </div>
 
-                  <div className="text-left sm:text-right shrink-0">
+                  <div className="text-left sm:text-right shrink-0 pt-1 sm:pt-0">
                     {heroVehicle.fipePrice && (
-                      <span className="font-mono text-xs text-text-muted line-through block tabular-nums">
+                      <span className="font-mono text-[11px] sm:text-xs text-text-muted line-through block tabular-nums">
                         FIPE: {formatCurrency(heroVehicle.fipePrice)}
                       </span>
                     )}
-                    <span className="font-mono text-2xl sm:text-3xl font-black text-white tabular-nums">
+                    <span className="font-mono text-xl sm:text-2xl md:text-3xl font-black text-white tabular-nums">
                       {formatCurrency(heroVehicle.price)}
                     </span>
                   </div>
                 </div>
 
                 {/* Linha 2: Grade de Métricas em Blocos com Fundo Escuro */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-4 border-y border-white/10">
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                    <span className="block font-mono text-[10px] uppercase tracking-wider text-text-muted">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 py-3 sm:py-4 border-y border-white/10">
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-text-muted">
                       Quilometragem
                     </span>
-                    <span className="font-mono text-sm sm:text-base font-bold text-white tabular-nums">
+                    <span className="font-mono text-xs sm:text-sm md:text-base font-bold text-white tabular-nums truncate block">
                       {formatNumber(heroVehicle.mileage)} km
                     </span>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                    <span className="block font-mono text-[10px] uppercase tracking-wider text-text-muted">
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-text-muted">
                       Câmbio
                     </span>
-                    <span className="font-mono text-sm sm:text-base font-bold text-white truncate block">
+                    <span className="font-mono text-xs sm:text-sm md:text-base font-bold text-white truncate block">
                       {heroVehicle.transmission}
                     </span>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                    <span className="block font-mono text-[10px] uppercase tracking-wider text-text-muted">
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-text-muted">
                       Combustível
                     </span>
-                    <span className="font-mono text-sm sm:text-base font-bold text-white truncate block">
+                    <span className="font-mono text-xs sm:text-sm md:text-base font-bold text-white truncate block">
                       {heroVehicle.fuelType}
                     </span>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                    <span className="block font-mono text-[10px] uppercase tracking-wider text-text-muted">
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-text-muted">
                       Cor Externa
                     </span>
-                    <span className="font-mono text-sm sm:text-base font-bold text-white truncate block">
+                    <span className="font-mono text-xs sm:text-sm md:text-base font-bold text-white truncate block">
                       {heroVehicle.color}
                     </span>
                   </div>
                 </div>
 
                 {/* Linha 3: Barra de Ação & Status */}
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-1">
-                  <div className="flex items-center gap-2 text-xs font-mono text-tricolore-green">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 pt-1">
+                  <div className="flex items-center gap-2 text-[11px] sm:text-xs font-mono text-tricolore-green">
                     <ShieldCheck className="w-4 h-4 shrink-0" />
                     <span>Laudo cautelar 100% aprovado • Pronta entrega</span>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
                     <Link
                       href={`/veiculos/${heroVehicle.slug}`}
-                      className="flex-1 sm:flex-initial px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-mono text-xs uppercase tracking-wider transition-colors text-center"
+                      className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-mono text-xs uppercase tracking-wider transition-colors text-center"
                     >
                       Dossiê Completo
                     </Link>
@@ -173,7 +173,7 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 sm:flex-initial px-6 py-3 rounded-xl bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 shadow-lg"
+                      className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 shadow-lg"
                     >
                       <MessageCircle className="w-4 h-4 text-tricolore-green" />
                       <span>Negociar</span>
@@ -190,7 +190,7 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
             
             {/* Micro-Card 1: Margem FIPE & Oportunidades */}
             <SpotlightCard
-              className="flex-1 flex flex-col p-6 rounded-2xl bg-bg-card border-border-subtle"
+              className="flex-1 flex flex-col p-5 sm:p-6 rounded-2xl bg-bg-card border-border-subtle"
               innerClassName="flex flex-col justify-between h-full"
             >
               <div className="flex items-start justify-between gap-4">
@@ -216,7 +216,7 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
 
             {/* Micro-Card 2: Laudo Cautelar 100% Aprovado */}
             <SpotlightCard
-              className="flex-1 flex flex-col p-6 rounded-2xl bg-bg-card border-border-subtle"
+              className="flex-1 flex flex-col p-5 sm:p-6 rounded-2xl bg-bg-card border-border-subtle"
               innerClassName="flex flex-col justify-between h-full"
             >
               <div className="flex items-start justify-between gap-4">
@@ -239,7 +239,7 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
 
             {/* Micro-Card 3: Grupos VIP & Eixo BC • CXS */}
             <SpotlightCard
-              className="flex-1 flex flex-col p-6 rounded-2xl bg-bg-card border-border-subtle"
+              className="flex-1 flex flex-col p-5 sm:p-6 rounded-2xl bg-bg-card border-border-subtle"
               innerClassName="flex flex-col justify-between h-full"
             >
               <div className="flex items-start justify-between gap-4">

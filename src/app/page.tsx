@@ -56,14 +56,14 @@ export default function HomePage() {
               <Reveal direction="up" delay={50}>
                 <div className="space-y-6 text-center lg:text-left">
                   {/* Top Badge: Hubs, Slogan & Replay Trigger */}
-                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-bg-card border border-border-subtle shadow-sm">
-                      <span className="flex h-2 w-2 rounded-full bg-tricolore-green animate-pulse" />
-                      <span className="font-mono text-xs uppercase tracking-widest text-text-secondary">
-                        Balneário Camboriú • Caxias do Sul
+                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 max-w-full">
+                    <div className="inline-flex flex-wrap items-center justify-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-bg-card border border-border-subtle shadow-sm max-w-full text-center">
+                      <span className="flex h-2 w-2 rounded-full bg-tricolore-green animate-pulse shrink-0" />
+                      <span className="font-mono text-[11px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-text-secondary">
+                        BC • CXS
                       </span>
-                      <span className="h-3 w-px bg-border-subtle" />
-                      <span className="text-xs font-semibold text-accent-gold">
+                      <span className="hidden sm:inline-block h-3 w-px bg-border-subtle" />
+                      <span className="text-[11px] sm:text-xs font-semibold text-accent-gold">
                         Repasses até 40% abaixo da FIPE
                       </span>
                     </div>
@@ -71,7 +71,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Headline Imponente */}
-                  <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-text-primary leading-[1.08]">
+                  <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-text-primary leading-[1.1]">
                     Mais que carros, entregamos{" "}
                     <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-text-primary via-gray-100 to-accent-gold">
                       confiança.
@@ -80,21 +80,21 @@ export default function HomePage() {
                   </h1>
 
                   {/* Subtitle */}
-                  <p className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                  <p className="text-text-secondary text-sm sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                     Conectamos compradores exigentes e investidores a <strong className="text-text-primary font-medium">oportunidades reais de mercado</strong>. Repasses de concessionárias cadastradas e estoque próprio desde 2019 com rigor pericial e laudo 100% aprovado.
                   </p>
 
                   {/* CTAs Principais */}
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
-                    <Link href="/veiculos">
-                      <Button variant="primary" size="lg" className="w-full sm:w-auto px-8 py-3.5 group shadow-lg shadow-tricolore-red/20">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-2">
+                    <Link href="/veiculos" className="w-full sm:w-auto">
+                      <Button variant="primary" size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-3.5 group shadow-lg shadow-tricolore-red/20">
                         <span>Explorar Estoque</span>
                         <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                       </Button>
                     </Link>
 
-                    <a href="#grupos-vip">
-                      <Button variant="secondary" size="lg" className="w-full sm:w-auto px-6 py-3.5 border border-tricolore-green/40 hover:border-tricolore-green group">
+                    <a href="#grupos-vip" className="w-full sm:w-auto">
+                      <Button variant="secondary" size="lg" className="w-full sm:w-auto px-5 sm:px-6 py-3.5 border border-tricolore-green/40 hover:border-tricolore-green group">
                         <Users className="w-4 h-4 mr-2 text-tricolore-green group-hover:scale-110 transition-transform" />
                         <span>Entrar nos Grupos VIP</span>
                       </Button>
@@ -104,8 +104,9 @@ export default function HomePage() {
                       href={COMMERCIAL_LINKS.comprarCarroUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="w-full sm:w-auto"
                     >
-                      <Button variant="outline" size="lg" className="w-full sm:w-auto px-6 py-3.5">
+                      <Button variant="outline" size="lg" className="w-full sm:w-auto px-5 sm:px-6 py-3.5">
                         <Phone className="w-4 h-4 mr-2 text-tricolore-green" />
                         <span>Falar com o Neni</span>
                       </Button>
@@ -113,29 +114,29 @@ export default function HomePage() {
                   </div>
 
                   {/* Badges de Confiança Rápida com Contadores Animados */}
-                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-border-subtle/80 max-w-xl mx-auto lg:mx-0">
-                    <div className="text-left">
-                      <div className="flex items-center gap-1.5 text-text-primary font-mono font-bold text-lg">
-                        <TrendingDown className="w-4 h-4 text-tricolore-green" />
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-6 border-t border-border-subtle/80 max-w-xl mx-auto lg:mx-0">
+                    <div className="text-center sm:text-left p-3 sm:p-0 rounded-xl sm:rounded-none bg-bg-card/40 sm:bg-transparent border sm:border-0 border-white/5">
+                      <div className="flex items-center justify-center sm:justify-start gap-1.5 text-text-primary font-mono font-bold text-base sm:text-lg">
+                        <TrendingDown className="w-4 h-4 text-tricolore-green shrink-0" />
                         <AnimatedCounter end={40} prefix="Até -" suffix="% FIPE" />
                       </div>
-                      <p className="text-text-muted text-xs">Margem real para economizar</p>
+                      <p className="text-text-muted text-[11px] sm:text-xs mt-0.5">Margem real para economizar</p>
                     </div>
 
-                    <div className="text-left border-l border-border-subtle pl-4">
-                      <div className="flex items-center gap-1.5 text-text-primary font-mono font-bold text-lg">
-                        <ShieldCheck className="w-4 h-4 text-tricolore-red" />
+                    <div className="text-center sm:text-left p-3 sm:p-0 rounded-xl sm:rounded-none bg-bg-card/40 sm:bg-transparent border sm:border-0 border-white/5 sm:border-l sm:border-border-subtle sm:pl-4">
+                      <div className="flex items-center justify-center sm:justify-start gap-1.5 text-text-primary font-mono font-bold text-base sm:text-lg">
+                        <ShieldCheck className="w-4 h-4 text-tricolore-red shrink-0" />
                         <AnimatedCounter end={150} suffix="+ Pontos" />
                       </div>
-                      <p className="text-text-muted text-xs">Laudo cautelar pré-compra</p>
+                      <p className="text-text-muted text-[11px] sm:text-xs mt-0.5">Laudo cautelar pré-compra</p>
                     </div>
 
-                    <div className="text-left border-l border-border-subtle pl-4">
-                      <div className="flex items-center gap-1.5 text-text-primary font-mono font-bold text-lg">
-                        <Truck className="w-4 h-4 text-accent-gold" />
+                    <div className="text-center sm:text-left p-3 sm:p-0 rounded-xl sm:rounded-none bg-bg-card/40 sm:bg-transparent border sm:border-0 border-white/5 sm:border-l sm:border-border-subtle sm:pl-4">
+                      <div className="flex items-center justify-center sm:justify-start gap-1.5 text-text-primary font-mono font-bold text-base sm:text-lg">
+                        <Truck className="w-4 h-4 text-accent-gold shrink-0" />
                         <AnimatedCounter end={2019} prefix="Desde " />
                       </div>
-                      <p className="text-text-muted text-xs">Central Balneário Camboriú</p>
+                      <p className="text-text-muted text-[11px] sm:text-xs mt-0.5">Central Balneário Camboriú</p>
                     </div>
                   </div>
                 </div>
@@ -143,10 +144,10 @@ export default function HomePage() {
             </div>
 
             {/* Destaque Visual / Oportunidade em Cartaz */}
-            <div className="lg:col-span-5 relative">
+            <div className="lg:col-span-5 relative w-full">
               <Reveal direction="zoom" delay={200}>
                 <div className="relative mx-auto max-w-md lg:max-w-none">
-                  <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-tricolore-green/20 via-border-active to-tricolore-red/20 blur-xl opacity-70" />
+                  <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-tricolore-green/20 via-border-active to-tricolore-red/20 blur-xl opacity-70 hidden sm:block" />
                   
                   <div className="relative rounded-2xl overflow-hidden bg-bg-card border border-border-subtle shadow-2xl animate-float-slow animate-shimmer">
                     <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-bg-primary/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-border-subtle shadow-sm">
@@ -156,7 +157,7 @@ export default function HomePage() {
                       </span>
                     </div>
 
-                    <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-bg-surface group">
+                    <div className="relative h-60 sm:h-80 w-full overflow-hidden bg-bg-surface group">
                       <Image
                         src={heroVehicle.images[0]}
                         alt={heroVehicle.title}
@@ -168,13 +169,13 @@ export default function HomePage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-bg-card via-transparent to-transparent" />
                     </div>
 
-                    <div className="p-6 space-y-4">
+                    <div className="p-4 sm:p-6 space-y-4">
                       <div>
                         <div className="flex items-center justify-between text-xs font-mono text-text-secondary mb-1">
                           <span>{heroVehicle.location}</span>
                           <span>{heroVehicle.year}/{heroVehicle.yearModel}</span>
                         </div>
-                        <h2 className="font-display font-bold text-xl text-text-primary">
+                        <h2 className="font-display font-bold text-lg sm:text-xl text-text-primary">
                           {heroVehicle.title}
                         </h2>
                       </div>
@@ -182,18 +183,18 @@ export default function HomePage() {
                       <div className="flex items-end justify-between pt-2 border-t border-border-subtle">
                         <div>
                           {heroVehicle.fipePrice && (
-                            <p className="text-xs text-text-muted line-through font-mono">
+                            <p className="text-xs text-text-muted line-through font-mono tabular-nums">
                               FIPE: {formatCurrency(heroVehicle.fipePrice)}
                             </p>
                           )}
-                          <p className="font-display font-extrabold text-2xl text-text-primary tracking-tight">
+                          <p className="font-mono font-extrabold text-xl sm:text-2xl text-text-primary tracking-tight tabular-nums">
                             {formatCurrency(heroVehicle.price)}
                           </p>
                         </div>
 
                         {heroVehicle.fipePrice && (
-                          <div className="px-2.5 py-1 rounded bg-tricolore-green/15 border border-tricolore-green/30 text-tricolore-green text-xs font-bold font-mono">
-                            Economia de {formatCurrency(Number(heroVehicle.fipePrice) - Number(heroVehicle.price))}
+                          <div className="px-2 py-1 rounded bg-tricolore-green/15 border border-tricolore-green/30 text-tricolore-green text-[11px] sm:text-xs font-bold font-mono text-right tabular-nums">
+                            Economia: {formatCurrency(Number(heroVehicle.fipePrice) - Number(heroVehicle.price))}
                           </div>
                         )}
                       </div>
@@ -237,17 +238,17 @@ export default function HomePage() {
                 href={COMMERCIAL_LINKS.comprarCarroUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-tricolore-green transition-smooth group flex items-center justify-between h-full shadow-md hover:-translate-y-1"
+                className="p-4 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-tricolore-green transition-smooth group flex items-center justify-between h-full shadow-md hover:-translate-y-1"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-tricolore-green/15 text-tricolore-green flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <MessageCircle className="w-6 h-6" />
+                <div className="flex items-center gap-3.5 sm:gap-4">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-tricolore-green/15 text-tricolore-green flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
                     <span className="text-[11px] font-mono uppercase tracking-wider text-tricolore-green font-bold">
                       Compre Aqui com Especialista
                     </span>
-                    <h3 className="font-display font-bold text-xl text-text-primary group-hover:text-tricolore-green transition-smooth">
+                    <h3 className="font-display font-bold text-lg sm:text-xl text-text-primary group-hover:text-tricolore-green transition-smooth">
                       Falar com Marcos (o Neni)
                     </h3>
                     <p className="text-text-muted text-xs mt-0.5">
@@ -265,17 +266,17 @@ export default function HomePage() {
                 href={COMMERCIAL_LINKS.venderCarroUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-accent-gold transition-smooth group flex items-center justify-between h-full shadow-md hover:-translate-y-1"
+                className="p-4 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-accent-gold transition-smooth group flex items-center justify-between h-full shadow-md hover:-translate-y-1"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent-gold/15 text-accent-gold flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <Flame className="w-6 h-6" />
+                <div className="flex items-center gap-3.5 sm:gap-4">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-accent-gold/15 text-accent-gold flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <Flame className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
                     <span className="text-[11px] font-mono uppercase tracking-wider text-accent-gold font-bold">
                       Venda Aqui Seu Veículo
                     </span>
-                    <h3 className="font-display font-bold text-xl text-text-primary group-hover:text-accent-gold transition-smooth">
+                    <h3 className="font-display font-bold text-lg sm:text-xl text-text-primary group-hover:text-accent-gold transition-smooth">
                       Central de Compras & Avaliação
                     </h3>
                     <p className="text-text-muted text-xs mt-0.5">
@@ -433,7 +434,7 @@ export default function HomePage() {
 
           {/* CTA após o grid */}
           <Reveal direction="up" delay={150}>
-            <div className="mt-14 p-8 rounded-2xl bg-bg-card border border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+            <div className="mt-14 p-5 sm:p-8 rounded-2xl bg-bg-card border border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
               <div className="space-y-1 text-center sm:text-left">
                 <h3 className="font-display font-bold text-xl text-text-primary">
                   Não encontrou o modelo exato que procura?
@@ -446,8 +447,9 @@ export default function HomePage() {
                 href={COMMERCIAL_LINKS.comprarCarroUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="w-full sm:w-auto"
               >
-                <Button variant="primary" className="whitespace-nowrap shadow-md">
+                <Button variant="primary" className="w-full sm:w-auto whitespace-nowrap shadow-md">
                   Falar com o Neni no WhatsApp
                 </Button>
               </a>
@@ -602,7 +604,7 @@ export default function HomePage() {
 
             <div className="lg:col-span-6">
               <Reveal direction="left" delay={150}>
-                <div className="p-8 sm:p-10 rounded-2xl bg-bg-card border border-border-subtle shadow-card">
+                <div className="p-5 sm:p-10 rounded-2xl bg-bg-card border border-border-subtle shadow-card">
                   <LeadForm
                     title="Solicitar Atendimento ou Proposta"
                     subtitle="Preencha os campos abaixo para ser direcionado ao consultor responsável."

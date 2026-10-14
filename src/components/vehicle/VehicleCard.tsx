@@ -20,6 +20,8 @@ interface VehicleCardProps {
 export function VehicleCard({ vehicle, variant = "default", showCompare = false, onCompare }: VehicleCardProps) {
   const primaryImage = vehicle.images[0];
   const isFeatured = vehicle.isFeatured;
+  const fipeSavings = vehicle.fipePrice ? Number(vehicle.fipePrice) - Number(vehicle.price) : 0;
+  const savingsPercent = vehicle.fipePrice ? Math.round((fipeSavings / Number(vehicle.fipePrice)) * 100) : 0;
 
   if (variant === "compact") {
     return (
@@ -92,13 +94,18 @@ export function VehicleCard({ vehicle, variant = "default", showCompare = false,
               {isFeatured && <Badge variant="gold" size="sm">Destaque</Badge>}
             </div>
 
-            <div className="absolute top-3 right-3 flex flex-col gap-1.5 z-20">
+            <div className="absolute top-3 right-3 flex flex-col items-end gap-1.5 z-20">
               {vehicle.status === "RESERVED" && <Badge variant="warning" size="sm">Reservado</Badge>}
               {vehicle.status === "SOLD" && <Badge variant="danger" size="sm">Vendido</Badge>}
+              {savingsPercent > 0 && (
+                <span className="sm:hidden px-2 py-0.5 rounded-full bg-black/80 backdrop-blur-md border border-tricolore-red/40 text-tricolore-red font-mono text-[10px] font-bold">
+                  -{savingsPercent}% FIPE
+                </span>
+              )}
             </div>
 
             {vehicle.fipePrice && (
-              <div className="absolute bottom-3 left-3 right-3 z-20">
+              <div className="absolute bottom-3 left-3 right-3 z-20 hidden sm:block">
                 <div className="bg-bg-primary/90 backdrop-blur-md px-3 py-2 rounded-lg border border-white/10">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-text-secondary text-xs font-mono uppercase">FIPE</span>
@@ -106,10 +113,10 @@ export function VehicleCard({ vehicle, variant = "default", showCompare = false,
                   </div>
                   <div className="flex items-center justify-between text-xs mt-0.5">
                     <span className="text-tricolore-green font-medium font-mono text-[11px] tabular-nums">
-                      Economia: {formatCurrency(Number(vehicle.fipePrice) - Number(vehicle.price))}
+                      Economia: {formatCurrency(fipeSavings)}
                     </span>
                     <span className="text-text-muted font-mono text-[11px] tabular-nums">
-                      {Math.round(((Number(vehicle.fipePrice) - Number(vehicle.price)) / Number(vehicle.fipePrice)) * 100)}% abaixo
+                      {savingsPercent}% abaixo
                     </span>
                   </div>
                 </div>
@@ -117,7 +124,7 @@ export function VehicleCard({ vehicle, variant = "default", showCompare = false,
             )}
           </div>
 
-          <CardContent className="flex-1 flex flex-col p-5">
+          <CardContent className="flex-1 flex flex-col p-4 sm:p-5">
             <div className="flex items-start justify-between gap-2 mb-3">
               <div>
                 <h3 className="font-display font-semibold text-lg text-text-primary group-hover:text-accent-gold transition-colors">
@@ -186,7 +193,7 @@ export function VehicleCard({ vehicle, variant = "default", showCompare = false,
             )}
           </CardContent>
 
-          <CardFooter className="px-5 pb-5 pt-0">
+          <CardFooter className="px-4 pb-4 sm:px-5 sm:pb-5 pt-0">
             <div className="flex items-center justify-between w-full pt-4 border-t border-white/5">
               <div>
                 <span className="font-mono font-bold text-xl text-text-primary tabular-nums">{formatCurrency(vehicle.price)}</span>

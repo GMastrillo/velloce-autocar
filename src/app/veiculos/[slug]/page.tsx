@@ -85,7 +85,7 @@ export default async function VehicleDetailPage({ params }: PageProps) {
               
               {/* Galeria de Fotos */}
               <div className="space-y-4">
-                <div className="relative h-[400px] sm:h-[500px] w-full rounded-2xl overflow-hidden bg-bg-surface border border-border-subtle shadow-card">
+                <div className="relative h-64 sm:h-[450px] md:h-[500px] w-full rounded-2xl overflow-hidden bg-bg-surface border border-border-subtle shadow-card">
                   <Image
                     src={vehicle.images[0]}
                     alt={vehicle.title}
@@ -102,9 +102,9 @@ export default async function VehicleDetailPage({ params }: PageProps) {
                 </div>
 
                 {vehicle.images.length > 1 && (
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-4">
                     {vehicle.images.slice(1).map((img, i) => (
-                      <div key={i} className="relative h-28 rounded-xl overflow-hidden bg-bg-surface border border-border-subtle">
+                      <div key={i} className="relative h-20 sm:h-28 rounded-xl overflow-hidden bg-bg-surface border border-border-subtle">
                         <Image
                           src={img}
                           alt={`${vehicle.title} - Vista ${i + 2}`}
@@ -119,7 +119,7 @@ export default async function VehicleDetailPage({ params }: PageProps) {
               </div>
 
               {/* Informações Principais */}
-              <div className="p-8 rounded-2xl bg-bg-surface border border-border-subtle space-y-6">
+              <div className="p-5 sm:p-8 rounded-2xl bg-bg-surface border border-border-subtle space-y-6">
                 <div>
                   <div className="flex flex-wrap items-center gap-3 mb-2">
                     <Badge category={vehicle.category} size="md" />
@@ -127,13 +127,13 @@ export default async function VehicleDetailPage({ params }: PageProps) {
                       {vehicle.location}
                     </span>
                   </div>
-                  <h1 className="font-display font-extrabold text-3xl sm:text-4xl text-text-primary">
+                  <h1 className="font-display font-extrabold text-2xl sm:text-4xl text-text-primary">
                     {vehicle.title}
                   </h1>
                 </div>
 
                 {/* Especificações em Grid Rápido */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-xl bg-bg-card border border-border-subtle">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 p-3.5 sm:p-4 rounded-xl bg-bg-card border border-border-subtle">
                   <div className="space-y-1">
                     <span className="text-xs text-text-muted flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5 text-text-secondary" /> Ano / Modelo
@@ -201,7 +201,7 @@ export default async function VehicleDetailPage({ params }: PageProps) {
                 )}
 
                 {/* Box de Rigor Pericial & Cautelar */}
-                <div className="p-5 rounded-xl bg-bg-card border border-tricolore-green/30 flex items-start gap-4">
+                <div className="p-4 sm:p-5 rounded-xl bg-bg-card border border-tricolore-green/30 flex items-start gap-3.5 sm:gap-4">
                   <div className="w-10 h-10 rounded-lg bg-tricolore-green/15 text-tricolore-green flex items-center justify-center flex-shrink-0">
                     <ShieldCheck className="w-6 h-6" />
                   </div>
@@ -223,7 +223,7 @@ export default async function VehicleDetailPage({ params }: PageProps) {
             <div className="lg:col-span-4 space-y-6">
               
               {/* Card de Preço & Ação Rápida */}
-              <div className="p-6 sm:p-8 rounded-2xl bg-bg-surface border border-border-subtle shadow-card space-y-6 sticky top-28">
+              <div className="p-5 sm:p-8 rounded-2xl bg-bg-surface border border-border-subtle shadow-card space-y-6 sticky top-28">
                 
                 <div>
                   <span className="text-xs font-mono uppercase tracking-widest text-text-secondary">

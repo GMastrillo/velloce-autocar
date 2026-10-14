@@ -24,12 +24,12 @@ export function LuxuryHeading({
         className
       )}
     >
-      <div className={cn("flex items-center gap-2.5", align === "center" && "justify-center")}>
-        <span className="h-px w-8 bg-accent-gold/60" />
-        <span className="text-[11px] font-mono uppercase tracking-[0.3em] text-accent-gold">
+      <div className={cn("flex flex-wrap items-center gap-2 sm:gap-2.5", align === "center" && "justify-center")}>
+        <span className="h-px w-6 sm:w-8 bg-accent-gold/60 shrink-0" />
+        <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.18em] sm:tracking-[0.3em] text-accent-gold">
           {subtitle}
         </span>
-        {align === "center" && <span className="h-px w-8 bg-accent-gold/60" />}
+        {align === "center" && <span className="h-px w-6 sm:w-8 bg-accent-gold/60 shrink-0" />}
       </div>
       <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-text-primary leading-tight">
         {title}

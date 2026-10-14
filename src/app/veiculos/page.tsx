@@ -65,7 +65,7 @@ export default async function VeiculosPage({ searchParams }: PageProps) {
           </div>
 
           {/* Barra de Filtros */}
-          <div className="p-6 bg-bg-surface border border-border-subtle rounded-2xl mb-10 shadow-sm">
+          <div className="p-4 sm:p-6 bg-bg-surface border border-border-subtle rounded-2xl mb-10 shadow-sm">
             <Suspense fallback={<div className="h-12 animate-pulse bg-bg-card rounded-lg" />}>
               <VehicleFiltersComponent initialFilters={filters} totalCount={total} />
             </Suspense>

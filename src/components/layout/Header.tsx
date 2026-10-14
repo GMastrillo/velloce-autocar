@@ -118,8 +118,8 @@ export function Header() {
         <div
           id="mobile-menu"
           className={cn(
-            "lg:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-border-subtle bg-bg-primary",
-            isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            "lg:hidden overflow-y-auto transition-all duration-300 ease-in-out border-t border-border-subtle bg-bg-primary/98 backdrop-blur-xl shadow-2xl",
+            isMobileMenuOpen ? "max-h-[85vh] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
           )}
         >
           <div className="py-4 space-y-2">
