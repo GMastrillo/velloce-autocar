@@ -10,11 +10,7 @@ import {
   CheckCircle2, 
   Sparkles,
   Users,
-  Plane,
-  Ship,
-  Bike,
-  Flame,
-  MessageCircle
+  Clock
 } from "lucide-react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { VehicleCard } from "@/components/vehicle/VehicleCard";
@@ -22,8 +18,13 @@ import { BentoGridShowroom } from "@/components/vehicle/BentoGridShowroom";
 import { Button } from "@/components/ui/Button";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { getFeaturedVehicles, MOCK_VEHICLES } from "@/data/vehicles";
-import { COMMERCIAL_LINKS, VIP_GROUPS } from "@/data/commercial";
-import { VelloceInspectionTerminal } from "@/components/home/VelloceInspectionTerminal";
+import { COMMERCIAL_LINKS } from "@/data/commercial";
+
+import { ShowroomDealCard } from "@/components/home/ShowroomDealCard";
+import { RepasseEngineering } from "@/components/home/RepasseEngineering";
+import { VipGroupsSection } from "@/components/home/VipGroupsSection";
+import { CuradoriaEspecialista } from "@/components/home/CuradoriaEspecialista";
+import { FaqAccordion } from "@/components/ui/FaqAccordion";
 
 import { IntroController } from "@/components/ui/IntroController";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
@@ -32,306 +33,177 @@ import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 export default function HomePage() {
   const featuredVehicles = getFeaturedVehicles();
+  const heroVehicle = featuredVehicles[0];
+
+  // Solução Definitiva do Bug 4 (Não Repetição de Estoque):
+  // O primeiro veículo (heroVehicle) já é protagonista no Bento Grid Showroom.
+  // Na grade de estoque abaixo, exibimos os demais veículos selecionados, evitando qualquer duplicidade!
+  const gridVehicles = featuredVehicles.filter((v) => v.id !== heroVehicle?.id);
 
   return (
     <MainLayout>
       {/* ========================================================
-          1. HERO SECTION CINEMATOGRÁFICA
+          1. NOVA HERO SECTION (AUTORIDADE, CONVERSÃO & ASSIMETRIA)
       ======================================================== */}
       <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-bg-primary pt-8 pb-16">
-        {/* Iluminação de Estúdio & Texturas Neutras */}
+        {/* Iluminação de Estúdio & Texturas Neutras Anti-Slop */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-gradient-to-b from-white/[0.04] via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(#22262F_1px,transparent_1px)] [background-size:32px_32px] opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/40 to-transparent" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-to-b from-white/[0.04] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(#22262F_1px,transparent_1px)] [background-size:32px_32px] opacity-15" />
+          <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/50 to-transparent" />
         </div>
 
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
-            {/* Texto & Proposta de Valor */}
+            {/* Coluna Esquerda (Copy & Ação) */}
             <div className="lg:col-span-7">
               <Reveal direction="up" delay={50}>
                 <div className="space-y-6 text-center lg:text-left">
-                  {/* Top Badge: Hubs, Slogan & Replay Trigger */}
-                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 max-w-full">
-                    <div className="inline-flex flex-wrap items-center justify-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-2xl sm:rounded-full bg-bg-card border border-border-subtle shadow-sm max-w-full text-center">
+                  
+                  {/* Eyebrow Badge com Ponto Pulsante & Replay Trigger */}
+                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 max-w-full">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-bg-card border border-border-subtle shadow-sm">
                       <span className="flex h-2 w-2 rounded-full bg-tricolore-green animate-pulse shrink-0" />
-                      <span className="font-mono text-[11px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-text-secondary">
-                        BC • CXS
-                      </span>
-                      <span className="hidden sm:inline-block h-3 w-px bg-border-subtle" />
-                      <span className="text-[11px] sm:text-xs font-semibold text-accent-gold">
-                        Repasses até 40% abaixo da FIPE
+                      <span className="font-mono text-[11px] sm:text-xs uppercase tracking-widest text-text-secondary font-bold">
+                        OPERAÇÃO ATIVA • BALNEÁRIO CAMBORIÚ & CAXIAS DO SUL
                       </span>
                     </div>
                     <IntroController />
                   </div>
 
-                  {/* Headline Imponente */}
+                  {/* Headline de Alto Prestígio */}
                   <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-text-primary leading-[1.1]">
-                    Mais que carros, entregamos{" "}
-                    <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-text-primary via-gray-100 to-accent-gold">
-                      confiança.
-                      <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-tricolore-green via-tricolore-white to-tricolore-red" />
+                    Acesso Privado a Superesportivos e Seminovos com{" "}
+                    <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-text-primary via-amber-100 to-accent-primary">
+                      até 40% Abaixo da FIPE.
+                      <span className="absolute -bottom-1 left-0 w-full h-[2.5px] bg-gradient-to-r from-accent-primary via-tricolore-green to-accent-primary opacity-80" />
                     </span>
                   </h1>
 
-                  {/* Subtitle */}
-                  <p className="text-text-secondary text-sm sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                    Conectamos compradores exigentes e investidores a <strong className="text-text-primary font-medium">oportunidades reais de mercado</strong>. Repasses de concessionárias cadastradas e estoque próprio desde 2019 com rigor pericial e laudo 100% aprovado.
+                  {/* Sub-headline Semântica e Persuasiva */}
+                  <p className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    Conectamos investidores e compradores exigentes a repasses reais de concessionárias e acervo próprio. Rigor pericial com laudo 100% aprovado antes de qualquer negociação.
                   </p>
 
-                  {/* CTAs Principais */}
-                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-2">
-                    <Link href="/veiculos" className="w-full sm:w-auto">
-                      <Button variant="primary" size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-3.5 group shadow-lg shadow-tricolore-red/20">
-                        <span>Explorar Estoque</span>
-                        <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                      </Button>
-                    </Link>
+                  {/* CTAs Claros de Conversão */}
+                  <div className="space-y-3 pt-2">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                      {/* Botão Primário: Grupos VIP */}
+                      <a href="#grupos-vip" className="w-full sm:w-auto">
+                        <Button
+                          variant="secondary"
+                          size="lg"
+                          className="w-full sm:w-auto px-6 sm:px-8 py-4 bg-tricolore-green hover:bg-emerald-600 text-white font-display font-bold text-sm uppercase tracking-wider group shadow-xl shadow-tricolore-green/15"
+                        >
+                          <Users className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                          <span>Entrar nos Grupos VIP de Ofertas</span>
+                          <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                        </Button>
+                      </a>
 
-                    <a href="#grupos-vip" className="w-full sm:w-auto">
-                      <Button variant="secondary" size="lg" className="w-full sm:w-auto px-5 sm:px-6 py-3.5 border border-tricolore-green/40 hover:border-tricolore-green group">
-                        <Users className="w-4 h-4 mr-2 text-tricolore-green group-hover:scale-110 transition-transform" />
-                        <span>Entrar nos Grupos VIP</span>
-                      </Button>
-                    </a>
+                      {/* Botão Secundário: Explorar Acervo */}
+                      <a href="#estoque" className="w-full sm:w-auto">
+                        <Button
+                          variant="outline"
+                          size="lg"
+                          className="w-full sm:w-auto px-6 sm:px-7 py-4 border-border-subtle hover:border-accent-primary text-text-primary hover:bg-white/[0.04] font-display font-semibold text-sm"
+                        >
+                          <Car className="w-4 h-4 mr-2 text-accent-primary" />
+                          <span>Explorar Acervo Disponível</span>
+                        </Button>
+                      </a>
+                    </div>
 
-                    <a
-                      href={COMMERCIAL_LINKS.comprarCarroUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full sm:w-auto"
-                    >
-                      <Button variant="outline" size="lg" className="w-full sm:w-auto px-5 sm:px-6 py-3.5">
-                        <Phone className="w-4 h-4 mr-2 text-tricolore-green" />
-                        <span>Falar com o Neni</span>
-                      </Button>
-                    </a>
+                    {/* Micro-copy de Blindagem Psicológica */}
+                    <p className="text-center lg:text-left text-xs font-mono text-text-muted">
+                      🔒 Grupos 100% silenciosos • Apenas alertas de oportunidades reais
+                    </p>
                   </div>
 
-                  {/* Badges de Confiança Rápida com Contadores Animados */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-6 border-t border-border-subtle/80 max-w-xl mx-auto lg:mx-0">
-                    <div className="text-center sm:text-left p-3 sm:p-0 rounded-xl sm:rounded-none bg-bg-card/40 sm:bg-transparent border sm:border-0 border-white/5">
-                      <div className="flex items-center justify-center sm:justify-start gap-1.5 text-text-primary font-mono font-bold text-base sm:text-lg">
+                  {/* Barra de Telemetria / Autoridade no Rodapé da Hero (tabular-nums sem flash de 0) */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-6 border-t border-border-subtle/80 max-w-2xl mx-auto lg:mx-0">
+                    
+                    {/* Item 1: Desde 2019 */}
+                    <div className="p-3 rounded-xl bg-bg-card/50 sm:bg-transparent border sm:border-0 border-white/5">
+                      <div className="flex items-center gap-1.5 text-text-primary font-mono font-bold text-base sm:text-lg tabular-data">
+                        <Clock className="w-4 h-4 text-accent-primary shrink-0" />
+                        <AnimatedCounter end={2019} prefix="Desde " />
+                      </div>
+                      <p className="text-text-muted text-[11px] mt-0.5 font-sans">Histórico sólido no Sul</p>
+                    </div>
+
+                    {/* Item 2: 150+ Pontos */}
+                    <div className="p-3 rounded-xl bg-bg-card/50 sm:bg-transparent border sm:border-0 border-white/5 sm:border-l sm:border-border-subtle sm:pl-4">
+                      <div className="flex items-center gap-1.5 text-text-primary font-mono font-bold text-base sm:text-lg tabular-data">
+                        <ShieldCheck className="w-4 h-4 text-tricolore-green shrink-0" />
+                        <AnimatedCounter end={150} suffix="+ Pontos" />
+                      </div>
+                      <p className="text-text-muted text-[11px] mt-0.5 font-sans">Vistoria cautelar pré-compra</p>
+                    </div>
+
+                    {/* Item 3: Até -40% FIPE */}
+                    <div className="p-3 rounded-xl bg-bg-card/50 sm:bg-transparent border sm:border-0 border-white/5 sm:border-l sm:border-border-subtle sm:pl-4">
+                      <div className="flex items-center gap-1.5 text-text-primary font-mono font-bold text-base sm:text-lg tabular-data">
                         <TrendingDown className="w-4 h-4 text-tricolore-green shrink-0" />
                         <AnimatedCounter end={40} prefix="Até -" suffix="% FIPE" />
                       </div>
-                      <p className="text-text-muted text-[11px] sm:text-xs mt-0.5">Margem real para economizar</p>
+                      <p className="text-text-muted text-[11px] mt-0.5 font-sans">Margem real de liquidez</p>
                     </div>
 
-                    <div className="text-center sm:text-left p-3 sm:p-0 rounded-xl sm:rounded-none bg-bg-card/40 sm:bg-transparent border sm:border-0 border-white/5 sm:border-l sm:border-border-subtle sm:pl-4">
-                      <div className="flex items-center justify-center sm:justify-start gap-1.5 text-text-primary font-mono font-bold text-base sm:text-lg">
-                        <ShieldCheck className="w-4 h-4 text-tricolore-red shrink-0" />
-                        <AnimatedCounter end={150} suffix="+ Pontos" />
+                    {/* Item 4: Envio Nacional */}
+                    <div className="p-3 rounded-xl bg-bg-card/50 sm:bg-transparent border sm:border-0 border-white/5 sm:border-l sm:border-border-subtle sm:pl-4">
+                      <div className="flex items-center gap-1.5 text-text-primary font-mono font-bold text-base sm:text-lg">
+                        <Truck className="w-4 h-4 text-accent-primary shrink-0" />
+                        <span>Nacional</span>
                       </div>
-                      <p className="text-text-muted text-[11px] sm:text-xs mt-0.5">Laudo cautelar pré-compra</p>
+                      <p className="text-text-muted text-[11px] mt-0.5 font-sans">Logística segurada</p>
                     </div>
 
-                    <div className="text-center sm:text-left p-3 sm:p-0 rounded-xl sm:rounded-none bg-bg-card/40 sm:bg-transparent border sm:border-0 border-white/5 sm:border-l sm:border-border-subtle sm:pl-4">
-                      <div className="flex items-center justify-center sm:justify-start gap-1.5 text-text-primary font-mono font-bold text-base sm:text-lg">
-                        <Truck className="w-4 h-4 text-accent-gold shrink-0" />
-                        <AnimatedCounter end={2019} prefix="Desde " />
-                      </div>
-                      <p className="text-text-muted text-[11px] sm:text-xs mt-0.5">Central Balneário Camboriú</p>
-                    </div>
                   </div>
+
                 </div>
               </Reveal>
             </div>
 
-            {/* Cockpit Interativo: Terminal de Curadoria & Raio-X Pericial */}
+            {/* Coluna Direita (Showroom Deal Card com Telemetria Financeira) */}
             <div className="lg:col-span-5 relative w-full">
               <Reveal direction="zoom" delay={150}>
-                <VelloceInspectionTerminal />
+                <ShowroomDealCard />
               </Reveal>
             </div>
 
           </div>
         </div>
 
-        {/* Indicador de rolagem suave para baixo */}
+        {/* Indicador de rolagem suave */}
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 hidden sm:block">
           <ScrollIndicator />
         </div>
       </section>
 
       {/* ========================================================
-          1.5. BENTO GRID SHOWROOM ASSIMÉTRICO (PADRÃO 21ST.DEV)
+          2. NOVA SEÇÃO: A ENGENHARIA DO REPASSE (3 PASSOS)
+      ======================================================== */}
+      <RepasseEngineering />
+
+      {/* ========================================================
+          3. SHOWROOM BENTO GRID EDITORIAL DE PRESTÍGIO
       ======================================================== */}
       <BentoGridShowroom vehicles={featuredVehicles} />
 
       {/* ========================================================
-          2. CENTRAL DE ATENDIMENTO DIRETO (COMPRAS & VENDAS)
+          4. SEÇÃO: GRUPOS VIP DO WHATSAPP (HIERARQUIA ASSIMÉTRICA)
       ======================================================== */}
-      <section className="py-8 bg-bg-surface border-y border-border-subtle">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            {/* Box 1: Quero Comprar com Marcos (Neni) */}
-            <Reveal direction="up" delay={80}>
-              <a
-                href={COMMERCIAL_LINKS.comprarCarroUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-tricolore-green transition-smooth group flex items-center justify-between h-full shadow-md hover:-translate-y-1"
-              >
-                <div className="flex items-center gap-3.5 sm:gap-4">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-tricolore-green/15 text-tricolore-green flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-tricolore-green font-bold">
-                      Compre Aqui com Especialista
-                    </span>
-                    <h3 className="font-display font-bold text-lg sm:text-xl text-text-primary group-hover:text-tricolore-green transition-smooth">
-                      Falar com Marcos (o Neni)
-                    </h3>
-                    <p className="text-text-muted text-xs mt-0.5">
-                      Negociação direta, envio de laudos e vídeos em primeira mão.
-                    </p>
-                  </div>
-                </div>
-                <ArrowRight className="w-5 h-5 text-text-muted group-hover:text-tricolore-green group-hover:translate-x-1 transition-smooth flex-shrink-0" />
-              </a>
-            </Reveal>
-
-            {/* Box 2: Quero Vender (Central de Compras) */}
-            <Reveal direction="up" delay={160}>
-              <a
-                href={COMMERCIAL_LINKS.venderCarroUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 sm:p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-accent-gold transition-smooth group flex items-center justify-between h-full shadow-md hover:-translate-y-1"
-              >
-                <div className="flex items-center gap-3.5 sm:gap-4">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-accent-gold/15 text-accent-gold flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <Flame className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-accent-gold font-bold">
-                      Venda Aqui Seu Veículo
-                    </span>
-                    <h3 className="font-display font-bold text-lg sm:text-xl text-text-primary group-hover:text-accent-gold transition-smooth">
-                      Central de Compras & Avaliação
-                    </h3>
-                    <p className="text-text-muted text-xs mt-0.5">
-                      Pagamento à vista, avaliação honesta e liquidez imediata.
-                    </p>
-                  </div>
-                </div>
-                <ArrowRight className="w-5 h-5 text-text-muted group-hover:text-accent-gold group-hover:translate-x-1 transition-smooth flex-shrink-0" />
-              </a>
-            </Reveal>
-
-          </div>
-        </div>
-      </section>
+      <VipGroupsSection />
 
       {/* ========================================================
-          3. SEÇÃO EXCLUSIVA: GRUPOS VIP DE WHATSAPP (ATÉ 40% ABAIXO FIPE)
+          5. SEÇÃO DE AUTORIDADE: CURADORIA ASSINADA POR MARCOS PANIZ
       ======================================================== */}
-      <section className="py-20 bg-bg-primary relative overflow-hidden" id="grupos-vip">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          
-          <Reveal direction="up" delay={50}>
-            <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-bg-card border border-border-subtle text-xs font-mono uppercase tracking-widest text-tricolore-green">
-                <Users className="w-4 h-4" />
-                <span>Canais VIP Oficiais no WhatsApp</span>
-              </div>
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-text-primary tracking-tight">
-                Quer Comprar e Economizar? Escolha Seu Grupo
-              </h2>
-              <p className="text-text-secondary text-base leading-relaxed">
-                Oportunidades reais com <strong className="text-text-primary font-medium">até 40% abaixo da tabela FIPE</strong> diretamente no seu WhatsApp. Repasses de concessionárias cadastradas e estoque próprio desde 2019. Basta clicar e entrar gratuitamente.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Grid dos 6 Grupos Oficiais com Animações Escalonadas */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {VIP_GROUPS.map((group, index) => {
-              const getCategoryIcon = (cat: string) => {
-                switch (cat) {
-                  case "PREMIUM": return <Flame className="w-5 h-5 text-tricolore-red" />;
-                  case "LEVE": return <Car className="w-5 h-5 text-tricolore-green" />;
-                  case "MOTOS": return <Bike className="w-5 h-5 text-accent-gold" />;
-                  case "PESADA": return <Truck className="w-5 h-5 text-text-primary" />;
-                  case "NAUTICA": return <Ship className="w-5 h-5 text-blue-400" />;
-                  case "AVIACAO": return <Plane className="w-5 h-5 text-emerald-400" />;
-                  default: return <Users className="w-5 h-5 text-text-secondary" />;
-                }
-              };
-
-              return (
-                <Reveal key={group.id} direction="up" delay={index * 90}>
-                  <div
-                    className="p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-border-active hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between space-y-5 group h-full shadow-lg hover:shadow-tricolore-green/10"
-                  >
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <div className="w-10 h-10 rounded-xl bg-bg-surface border border-border-subtle flex items-center justify-center">
-                          {getCategoryIcon(group.category)}
-                        </div>
-                        <span className="px-2.5 py-1 rounded bg-bg-surface text-[11px] font-mono text-accent-gold border border-border-subtle">
-                          {group.tag}
-                        </span>
-                      </div>
-
-                      <div>
-                        <h3 className="font-display font-bold text-xl text-text-primary group-hover:text-tricolore-green transition-smooth">
-                          {group.name}
-                        </h3>
-                        <p className="text-xs font-mono text-text-muted mt-0.5">
-                          Faixa: {group.range}
-                        </p>
-                      </div>
-
-                      <p className="text-text-secondary text-sm leading-relaxed">
-                        {group.description}
-                      </p>
-                    </div>
-
-                    <a
-                      href={group.inviteUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block pt-2"
-                    >
-                      <button className="w-full py-3 px-4 rounded-xl bg-tricolore-green hover:bg-emerald-600 text-white font-medium text-sm flex items-center justify-center gap-2 transition-smooth shadow-md group/btn cursor-pointer">
-                        <MessageCircle className="w-4 h-4 fill-current" />
-                        <span>Entrar no Grupo VIP</span>
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                      </button>
-                    </a>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-
-          <Reveal direction="up" delay={200}>
-            <div className="mt-12 p-6 rounded-2xl bg-bg-surface border border-border-subtle text-center space-y-2">
-              <p className="text-sm text-text-secondary">
-                💡 <strong>Dica Velloce:</strong> Indique um amigo para economizar também! Caso veja alguma oportunidade de interesse nos grupos, basta chamar no Direct do Instagram ou falar diretamente com o Neni.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-4 pt-2 text-xs font-mono text-text-muted">
-                <span>Instagram: <a href={COMMERCIAL_LINKS.instagramVelloce} target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-tricolore-red underline">@veloceimportsofc</a></span>
-                <span>•</span>
-                <span>Marcos: <a href={COMMERCIAL_LINKS.instagramNeni} target="_blank" rel="noopener noreferrer" className="text-accent-gold hover:underline">@omarcospaniz</a></span>
-                <span>•</span>
-                <span>Central BC: Balneário Camboriú - SC</span>
-              </div>
-            </div>
-          </Reveal>
-
-        </div>
-      </section>
+      <CuradoriaEspecialista />
 
       {/* ========================================================
-          4. VITRINE DE DESTAQUES (SHOWCASE)
+          6. VITRINE DE DESTAQUES (SEM DUPLICIDADE DE ESTOQUE)
       ======================================================== */}
       <section className="py-20 bg-bg-surface border-t border-border-subtle" id="estoque">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -339,14 +211,14 @@ export default function HomePage() {
           <Reveal direction="up" delay={50}>
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
               <div>
-                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent-gold mb-2">
+                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent-primary mb-2">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Oportunidades em Destaque</span>
+                  <span>Acervo Complementar em Destaque</span>
                 </div>
                 <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-text-primary tracking-tight">
                   Estoque Selecionado com Margem Real
                 </h2>
-                <p className="text-text-secondary text-base mt-2 max-w-xl">
+                <p className="text-text-secondary text-base mt-2 max-w-xl leading-relaxed">
                   Todos os veículos passam por rigorosa avaliação pré-compra e possuem laudo cautelar aprovado antes de serem anunciados.
                 </p>
               </div>
@@ -360,9 +232,9 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          {/* Grid de Veículos com Reveal Escalonado */}
+          {/* Grid de Veículos Não Duplicados com Reveal Escalonado */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredVehicles.map((vehicle, index) => (
+            {gridVehicles.map((vehicle, index) => (
               <Reveal key={vehicle.id} direction="up" delay={index * 120}>
                 <VehicleCard vehicle={vehicle} variant="featured" />
               </Reveal>
@@ -384,6 +256,7 @@ export default function HomePage() {
                 href={COMMERCIAL_LINKS.comprarCarroUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Falar com o Neni no WhatsApp para buscar modelo sob encomenda"
                 className="w-full sm:w-auto"
               >
                 <Button variant="primary" className="w-full sm:w-auto whitespace-nowrap shadow-md">
@@ -396,22 +269,22 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          5. RIGOR PERICIAL & OS PILARES VELLOCE
+          7. RIGOR PERICIAL & OS PILARES VELLOCE
       ======================================================== */}
       <section className="py-20 bg-bg-primary relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           
           <Reveal direction="up" delay={50}>
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-tricolore-red">
-                <ShieldCheck className="w-4 h-4" />
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent-primary">
+                <ShieldCheck className="w-4 h-4 text-tricolore-green" />
                 <span>Padrão de Excelência Automotiva</span>
               </div>
               <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-text-primary tracking-tight">
                 Por que Comprar ou Vender na Velloce?
               </h2>
               <p className="text-text-secondary text-base leading-relaxed">
-                No mercado automotivo tradicional, promessas vazias não resistem a um laudo técnico. Na Velloce, operamos com transparência de ponta a ponta.
+                No mercado automotivo tradicional, promessas vazias não resistem a um laudo técnico. Na Velloce, operamos com transparência pericial de ponta a ponta.
               </p>
             </div>
           </Reveal>
@@ -420,8 +293,8 @@ export default function HomePage() {
             
             {/* Pilar 1 */}
             <Reveal direction="up" delay={80}>
-              <div className="p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-border-active transition-smooth space-y-4 h-full shadow-md hover:-translate-y-1">
-                <div className="w-12 h-12 rounded-xl bg-tricolore-red/10 border border-tricolore-red/20 flex items-center justify-center text-tricolore-red">
+              <div className="p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-accent-primary/40 transition-smooth space-y-4 h-full shadow-md hover:-translate-y-1">
+                <div className="w-12 h-12 rounded-xl bg-tricolore-green/10 border border-tricolore-green/20 flex items-center justify-center text-tricolore-green">
                   <TrendingDown className="w-6 h-6" />
                 </div>
                 <h3 className="font-display font-bold text-xl text-text-primary">
@@ -435,7 +308,7 @@ export default function HomePage() {
 
             {/* Pilar 2 */}
             <Reveal direction="up" delay={160}>
-              <div className="p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-border-active transition-smooth space-y-4 h-full shadow-md hover:-translate-y-1">
+              <div className="p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-tricolore-green/40 transition-smooth space-y-4 h-full shadow-md hover:-translate-y-1">
                 <div className="w-12 h-12 rounded-xl bg-tricolore-green/10 border border-tricolore-green/20 flex items-center justify-center text-tricolore-green">
                   <FileCheck2 className="w-6 h-6" />
                 </div>
@@ -450,8 +323,8 @@ export default function HomePage() {
 
             {/* Pilar 3 */}
             <Reveal direction="up" delay={240}>
-              <div className="p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-border-active transition-smooth space-y-4 h-full shadow-md hover:-translate-y-1">
-                <div className="w-12 h-12 rounded-xl bg-accent-gold/10 border border-accent-gold/20 flex items-center justify-center text-accent-gold">
+              <div className="p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-accent-primary/40 transition-smooth space-y-4 h-full shadow-md hover:-translate-y-1">
+                <div className="w-12 h-12 rounded-xl bg-accent-primary/10 border border-accent-primary/20 flex items-center justify-center text-accent-primary">
                   <Car className="w-6 h-6" />
                 </div>
                 <h3 className="font-display font-bold text-xl text-text-primary">
@@ -466,7 +339,7 @@ export default function HomePage() {
             {/* Pilar 4 */}
             <Reveal direction="up" delay={320}>
               <div className="p-6 rounded-2xl bg-bg-card border border-border-subtle hover:border-border-active transition-smooth space-y-4 h-full shadow-md hover:-translate-y-1">
-                <div className="w-12 h-12 rounded-xl bg-text-primary/10 border border-text-primary/20 flex items-center justify-center text-text-primary">
+                <div className="w-12 h-12 rounded-xl bg-text-primary/10 border border-white/10 flex items-center justify-center text-text-primary">
                   <Truck className="w-6 h-6" />
                 </div>
                 <h3 className="font-display font-bold text-xl text-text-primary">
@@ -484,7 +357,12 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          6. FORMULÁRIO DE CONTATO & CAPTAÇÃO DE LEADS
+          8. NOVA SEÇÃO: FAQ ESTRATÉGICO (QUEBRA DE OBJEÇÕES)
+      ======================================================== */}
+      <FaqAccordion />
+
+      {/* ========================================================
+          9. FORMULÁRIO DE CONTATO & CAPTAÇÃO DE LEADS
       ======================================================== */}
       <section className="py-20 bg-bg-surface border-t border-border-subtle" id="contato">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -493,7 +371,7 @@ export default function HomePage() {
             <div className="lg:col-span-6 space-y-6">
               <Reveal direction="right" delay={100}>
                 <div className="space-y-6">
-                  <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent-gold">
+                  <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent-primary">
                     <Phone className="w-4 h-4 text-tricolore-green" />
                     <span>Atendimento Consultivo Direto</span>
                   </div>
@@ -516,7 +394,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-lg bg-bg-card border border-border-subtle flex items-center justify-center text-tricolore-red flex-shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-bg-card border border-border-subtle flex items-center justify-center text-accent-primary flex-shrink-0">
                         <CheckCircle2 className="w-4 h-4" />
                       </div>
                       <div>
@@ -526,7 +404,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-lg bg-bg-card border border-border-subtle flex items-center justify-center text-accent-gold flex-shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-bg-card border border-border-subtle flex items-center justify-center text-tricolore-green flex-shrink-0">
                         <CheckCircle2 className="w-4 h-4" />
                       </div>
                       <div>

@@ -86,7 +86,8 @@ export function Header() {
             <div className="hidden sm:flex items-center gap-3 px-4 py-2 bg-bg-card border border-border-subtle rounded-lg">
               <Phone className="h-4 w-4 text-tricolore-green" />
               <a
-                href={`tel:+5554996827149`}
+                href="tel:+5554996827149"
+                aria-label="Ligar para o telefone (54) 99682-7149"
                 className="font-mono text-sm font-medium text-text-primary hover:text-tricolore-green transition-smooth"
               >
                 (54) 99682-7149
@@ -97,6 +98,7 @@ export function Header() {
               href={COMMERCIAL_LINKS.comprarCarroUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Falar diretamente com a Velloce AutoCar pelo WhatsApp"
               className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-tricolore-green text-tricolore-white font-medium rounded-lg hover:bg-tricolore-green/90 transition-smooth"
             >
               <Zap className="h-4 w-4" />
@@ -138,6 +140,7 @@ export function Header() {
                 href={COMMERCIAL_LINKS.comprarCarroUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Falar com a Velloce AutoCar pelo WhatsApp"
                 className="flex items-center gap-3 px-4 py-3 bg-tricolore-green text-tricolore-white font-medium rounded-lg"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -146,6 +149,7 @@ export function Header() {
               </a>
               <a
                 href="tel:+5554996827149"
+                aria-label="Ligar para o telefone (54) 99682-7149"
                 className="flex items-center gap-3 px-4 py-3 text-text-primary font-medium hover:bg-bg-surface rounded-lg transition-smooth"
               >
                 <Phone className="h-5 w-5 text-tricolore-green" />

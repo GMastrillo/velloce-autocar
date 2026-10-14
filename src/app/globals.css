@@ -1,38 +1,55 @@
 @import "tailwindcss";
 
 @theme {
-  /* Cores Primárias Velloce */
-  --color-bg-primary: #0A0B0D;
-  --color-bg-surface: #121418;
-  --color-bg-card: #16181D;
-  --color-border-subtle: #22262F;
+  /* Paleta de Cores Nomeada - Design Master */
+  --color-bg-primary: #08080A;
+  --color-bg-elevated: #111216;
+  --color-bg-surface: #111216;
+  --color-bg-card: #111216;
+  --color-bg-glass: rgba(17, 18, 22, 0.78);
+  --color-text-primary: #F4F1EA;
+  --color-text-secondary: #A1A1AA;
+  --color-text-muted: #71717A;
+  --color-accent-primary: #D4AF37;
+  --color-accent-gold: #D4AF37;
+  --color-accent-gold-soft: #E5B869;
+  --color-feedback-success: #10B981;
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(212, 175, 55, 0.35);
   --color-border-active: rgba(255, 255, 255, 0.15);
+  --brand-glow: rgba(212, 175, 55, 0.12);
 
-  /* Acentos Tricolore Italiano */
-  --color-tricolore-green: #009246;
+  /* Acentos Tricolore & Performance */
+  --color-tricolore-green: #10B981;
   --color-tricolore-white: #FFFFFF;
   --color-tricolore-red: #CD212A;
 
-  /* Cores de Acento & Prestígio */
-  --color-accent-gold: #D4AF37;
-  --color-accent-gold-soft: #E5B869;
-
-  /* Textos */
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #9DA3AF;
-  --color-text-muted: #6B7280;
-
   /* Tipografia */
-  --font-display: "Plus Jakarta Sans", "Clash Display", -apple-system, sans-serif;
-  --font-body: "Inter", -apple-system, sans-serif;
-  --font-mono: "Geist Mono", "JetBrains Mono", monospace;
+  --font-display: var(--font-display, "Plus Jakarta Sans", sans-serif);
+  --font-sans: var(--font-body, "Inter", sans-serif);
+  --font-body: var(--font-body, "Inter", sans-serif);
+  --font-mono: var(--font-mono, "Geist Mono", monospace);
 
   /* Sombras & Transições */
   --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+  --shadow-raised: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+  --shadow-floating: 0 24px 60px -15px rgba(0, 0, 0, 0.85);
   --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
+  --color-bg-primary: #08080A;
+  --color-bg-elevated: #111216;
+  --color-bg-glass: rgba(17, 18, 22, 0.78);
+  --color-text-primary: #F4F1EA;
+  --color-text-secondary: #A1A1AA;
+  --color-text-muted: #71717A;
+  --color-accent-primary: #D4AF37;
+  --color-feedback-success: #10B981;
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(212, 175, 55, 0.35);
+  --brand-glow: rgba(212, 175, 55, 0.12);
+
   --background: var(--color-bg-primary);
   --foreground: var(--color-text-primary);
 }
@@ -62,6 +79,12 @@ h1, h2, h3, h4, h5, h6 {
   font-variant-numeric: tabular-nums;
 }
 
+/* Regra Obrigatória Design-Master: Classe Utilitária para Dados Tabulares */
+.tabular-data {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
 /* Scrollbar customizada */
 ::-webkit-scrollbar {
   width: 8px;
@@ -83,13 +106,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Selection */
 ::selection {
-  background: var(--color-tricolore-red);
-  color: var(--color-tricolore-white);
+  background: var(--color-accent-primary);
+  color: #08080A;
 }
 
-/* Focus visible */
+/* Focus visible de Alto Padrão com Dourado de Prestígio */
 :focus-visible {
-  outline: 2px solid var(--color-tricolore-red);
+  outline: 2px solid var(--color-accent-primary);
   outline-offset: 2px;
 }
 

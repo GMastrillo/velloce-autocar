@@ -17,16 +17,23 @@ export function AnimatedCounter({
   suffix = "",
   className = "",
 }: AnimatedCounterProps) {
-  const [value, setValue] = useState(0);
+  // Inicializa imediatamente com o valor final para que o SSR e o HTML inicial nunca fiquem zerados
+  const [value, setValue] = useState(end);
   const ref = useRef<HTMLSpanElement>(null);
   const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
+    // Respeita acessibilidade para quem desativou movimentos (já inicializado com end)
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasStarted) {
             setHasStarted(true);
+            setValue(0);
           }
         });
       },
@@ -38,12 +45,14 @@ export function AnimatedCounter({
     }
 
     return () => observer.disconnect();
-  }, [hasStarted]);
+  }, [hasStarted, end]);
 
   useEffect(() => {
     if (!hasStarted) return;
 
     let startTimestamp: number | null = null;
+    let animationFrameId: number;
+
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
@@ -52,11 +61,17 @@ export function AnimatedCounter({
       setValue(Math.round(easeProgress * end));
 
       if (progress < 1) {
-        window.requestAnimationFrame(step);
+        animationFrameId = window.requestAnimationFrame(step);
       }
     };
 
-    window.requestAnimationFrame(step);
+    animationFrameId = window.requestAnimationFrame(step);
+
+    return () => {
+      if (animationFrameId) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
+    };
   }, [hasStarted, end, duration]);
 
   return (

@@ -6,7 +6,7 @@ import { ArrowRight, ShieldCheck, TrendingDown, Users, Sparkles, MessageCircle }
 import { Vehicle } from "@/types";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { LuxuryHeading } from "@/components/ui/LuxuryHeading";
-import { formatCurrency, formatNumber } from "@/lib/utils";
+import { formatCurrency, formatNumber, getFuelTypeLabel, getTransmissionLabel } from "@/lib/utils";
 import { COMMERCIAL_LINKS } from "@/data/commercial";
 
 interface BentoGridShowroomProps {
@@ -130,7 +130,7 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
                       Câmbio
                     </span>
                     <span className="font-mono text-xs sm:text-sm md:text-base font-bold text-white truncate block">
-                      {heroVehicle.transmission}
+                      {getTransmissionLabel(heroVehicle.transmission)}
                     </span>
                   </div>
 
@@ -139,7 +139,7 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
                       Combustível
                     </span>
                     <span className="font-mono text-xs sm:text-sm md:text-base font-bold text-white truncate block">
-                      {heroVehicle.fuelType}
+                      {getFuelTypeLabel(heroVehicle.fuelType)}
                     </span>
                   </div>
 
