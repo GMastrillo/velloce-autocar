@@ -67,7 +67,7 @@ export default function HomePage() {
 
                   {/* Sub-headline Semântica e Persuasiva */}
                   <p className="text-text-secondary text-base sm:text-[17px] max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                    Conectamos investidores e compradores exigentes a repasses reais de concessionárias e acervo próprio. Rigor pericial com laudo 100% aprovado antes de qualquer negociação.
+                    Conectamos investidores e compradores exigentes a repasses reais de concessionárias e estoque próprio. Rigor pericial com laudo 100% aprovado antes de qualquer negociação.
                   </p>
 
                   {/* CTAs Claros de Conversão (Capsule Apple HIG) */}
@@ -86,7 +86,7 @@ export default function HomePage() {
                         </Button>
                       </a>
 
-                      {/* Botão Secundário: Explorar Acervo */}
+                      {/* Botão Secundário: Explorar Estoque */}
                       <a href="#estoque" className="w-full sm:w-auto">
                         <Button
                           variant="outline"
@@ -94,7 +94,7 @@ export default function HomePage() {
                           className="w-full sm:w-auto px-7 font-semibold"
                         >
                           <Car className="w-4 h-4 mr-1 text-accent-primary" />
-                          <span>Explorar Acervo</span>
+                          <span>Explorar Estoque</span>
                         </Button>
                       </a>
                     </div>
@@ -171,7 +171,7 @@ export default function HomePage() {
                   <span>Showroom Oficial • Pronta Entrega</span>
                 </div>
                 <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-text-primary tracking-tight">
-                  Acervo Selecionado com Margem Real
+                  Estoque Selecionado com Margem Real
                 </h2>
                 <p className="text-text-secondary text-base mt-2 max-w-xl leading-relaxed">
                   Veículos periciados com laudo cautelar 100% aprovado e histórico aberto antes de qualquer negociação.

@@ -53,7 +53,7 @@ export function ShowroomDealCard({ deal }: ShowroomDealCardProps) {
           <div className="flex items-center gap-2">
             <span className="flex h-2 w-2 rounded-full bg-tricolore-green" />
             <span className="font-mono text-[11px] uppercase tracking-wider text-text-secondary font-medium">
-              Destaque do Acervo
+              Destaque do Estoque
             </span>
           </div>
           <span className="font-mono text-[11px] text-text-muted">

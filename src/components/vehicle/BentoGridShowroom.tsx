@@ -39,7 +39,7 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
             href="/veiculos"
             className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-accent-gold hover:text-white transition-colors group shrink-0"
           >
-            <span>Ver Acervo Completo</span>
+            <span>Ver Estoque Completo</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
@@ -232,7 +232,7 @@ export function BentoGridShowroom({ vehicles }: BentoGridShowroomProps) {
                   Rigor Pericial Certificado
                 </h4>
                 <p className="text-text-muted text-xs leading-relaxed">
-                  Avaliação estrutural, mecânica e de espessura de pintura antes de qualquer entrada no acervo. Zero carros maquiados.
+                  Avaliação estrutural, mecânica e de espessura de pintura antes de qualquer entrada no estoque. Zero carros maquiados.
                 </p>
               </div>
             </SpotlightCard>
