@@ -27,7 +27,7 @@ export function WhatsAppButton({ vehicleTitle, vehiclePrice, vehicleSlug }: What
     : COMMERCIAL_LINKS.comprarCarroUrl;
 
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end">
       {/* Pop-up Menu */}
       {isOpen && (
         <div className="mb-3 w-[calc(100vw-2rem)] sm:w-96 max-w-sm rounded-2xl bg-bg-card border border-border-subtle shadow-2xl p-4 animate-in fade-in slide-in-from-bottom-5 duration-200">

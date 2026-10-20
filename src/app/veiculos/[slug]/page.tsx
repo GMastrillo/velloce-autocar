@@ -102,9 +102,9 @@ export default async function VehicleDetailPage({ params }: PageProps) {
                 </div>
 
                 {vehicle.images.length > 1 && (
-                  <div className="grid grid-cols-3 gap-2 sm:gap-4">
+                  <div className="flex sm:grid sm:grid-cols-3 gap-2.5 sm:gap-4 overflow-x-auto snap-x snap-mandatory pb-1 touch-pan-y">
                     {vehicle.images.slice(1).map((img, i) => (
-                      <div key={i} className="relative h-20 sm:h-28 rounded-xl overflow-hidden bg-bg-surface border border-border-subtle">
+                      <div key={i} className="relative w-36 sm:w-auto shrink-0 snap-start h-24 sm:h-28 rounded-xl overflow-hidden bg-bg-surface border border-border-subtle">
                         <Image
                           src={img}
                           alt={`${vehicle.title} - Vista ${i + 2}`}
@@ -130,6 +130,47 @@ export default async function VehicleDetailPage({ params }: PageProps) {
                   <h1 className="font-display font-extrabold text-2xl sm:text-4xl text-text-primary">
                     {vehicle.title}
                   </h1>
+
+                  {/* Resumo de Preço & CTA Rápido no Mobile (Acima da Dobra) */}
+                  <div className="lg:hidden mt-4 p-4 rounded-2xl bg-bg-card border border-border-subtle space-y-3">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <div>
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-accent-gold block">
+                          Valor Velloce
+                        </span>
+                        <span className="font-mono font-extrabold text-2xl text-text-primary tabular-nums">
+                          {formatCurrency(vehicle.price)}
+                        </span>
+                      </div>
+                      {vehicle.fipePrice && (
+                        <div className="text-right">
+                          <span className="text-[11px] font-mono text-text-muted line-through block tabular-nums">
+                            FIPE: {formatCurrency(vehicle.fipePrice)}
+                          </span>
+                          {fipeDiff > 0 && (
+                            <span className="text-xs font-mono font-bold text-tricolore-green tabular-nums">
+                              -{formatCurrency(fipeDiff)}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    <a
+                      href={directWhatsAppUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
+                      <Button
+                        variant="secondary"
+                        size="lg"
+                        className="w-full justify-center text-black font-bold"
+                      >
+                        <Phone className="w-4 h-4 mr-1.5" />
+                        <span>Negociar Agora no WhatsApp</span>
+                      </Button>
+                    </a>
+                  </div>
                 </div>
 
                 {/* Especificações em Grid Rápido */}

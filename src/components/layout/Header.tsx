@@ -31,7 +31,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-40 transition-smooth",
+        "fixed top-0 left-0 right-0 z-40 transition-smooth pt-[env(safe-area-inset-top,0px)]",
         isScrolled
           ? "bg-bg-primary/95 backdrop-blur-md border-b border-border-subtle shadow-card"
           : "bg-transparent"
@@ -118,8 +118,8 @@ export function Header() {
         <div
           id="mobile-menu"
           className={cn(
-            "lg:hidden overflow-y-auto transition-all duration-300 ease-in-out border-t border-border-subtle bg-bg-primary/98 backdrop-blur-xl shadow-2xl",
-            isMobileMenuOpen ? "max-h-[85vh] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+            "lg:hidden overflow-y-auto overscroll-contain transition-all duration-300 ease-in-out border-t border-border-subtle bg-bg-primary/98 backdrop-blur-xl shadow-2xl",
+            isMobileMenuOpen ? "max-h-[85dvh] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
           )}
         >
           <div className="py-4 space-y-2">

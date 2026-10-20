@@ -35,7 +35,7 @@ export default function HomePage() {
       {/* ========================================================
           1. HERO SECTION — APPLE HIG CLARITY & DEFERENCE
       ======================================================== */}
-      <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-bg-primary pt-10 pb-20">
+      <section className="relative min-h-[100svh] lg:min-h-[88vh] flex items-center justify-center overflow-hidden bg-bg-primary pt-8 pb-16 sm:pt-10 sm:pb-20">
         {/* Iluminação de Estúdio Sutil */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[420px] bg-gradient-to-b from-white/[0.03] via-transparent to-transparent" />

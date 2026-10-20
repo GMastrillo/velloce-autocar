@@ -48,7 +48,7 @@ const trustBadges = [
 
 export function Footer() {
   return (
-    <footer className="bg-bg-surface border-t border-border-subtle">
+    <footer className="bg-bg-surface border-t border-border-subtle pb-[env(safe-area-inset-bottom,0px)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           <div className="lg:col-span-2">

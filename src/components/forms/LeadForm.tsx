@@ -114,6 +114,8 @@ export function LeadForm({ vehicle, onSuccess, title, subtitle }: LeadFormProps)
       <Input
         label="Seu Nome Completo *"
         placeholder="Ex: Roberto Silva"
+        autoComplete="name"
+        enterKeyHint="next"
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
@@ -122,6 +124,10 @@ export function LeadForm({ vehicle, onSuccess, title, subtitle }: LeadFormProps)
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Input
           label="WhatsApp / Telefone *"
+          type="tel"
+          inputMode="tel"
+          autoComplete="tel"
+          enterKeyHint="next"
           placeholder="(00) 00000-0000"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
@@ -130,6 +136,11 @@ export function LeadForm({ vehicle, onSuccess, title, subtitle }: LeadFormProps)
         <Input
           label="E-mail (opcional)"
           type="email"
+          inputMode="email"
+          autoComplete="email"
+          autoCapitalize="none"
+          autoCorrect="off"
+          enterKeyHint="next"
           placeholder="roberto@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -139,6 +150,7 @@ export function LeadForm({ vehicle, onSuccess, title, subtitle }: LeadFormProps)
       <Textarea
         label="Mensagem *"
         rows={3}
+        enterKeyHint="send"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         required
