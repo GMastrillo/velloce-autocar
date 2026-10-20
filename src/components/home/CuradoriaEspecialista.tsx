@@ -110,15 +110,15 @@ export function CuradoriaEspecialista() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-white/5">
+              <div className="pt-4 border-t border-white/[0.06]">
                 <a
                   href={COMMERCIAL_LINKS.comprarCarroUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Falar com o Marcos (o Neni) no WhatsApp para comprar veículo"
-                  className="w-full py-4 px-6 rounded-xl bg-tricolore-green hover:bg-emerald-600 text-white font-display font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-smooth shadow-lg group/btn cursor-pointer"
+                  className="w-full min-h-[48px] py-3.5 px-6 rounded-full bg-tricolore-green hover:bg-tricolore-green/90 active:scale-[0.98] text-black font-display font-bold text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-md group/btn cursor-pointer"
                 >
-                  <MessageCircle className="w-5 h-5 fill-current" />
+                  <MessageCircle className="w-4 h-4 fill-current" />
                   <span>Falar com o Neni no WhatsApp</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </a>
@@ -168,15 +168,15 @@ export function CuradoriaEspecialista() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-white/5">
+              <div className="pt-4 border-t border-white/[0.06]">
                 <a
                   href={COMMERCIAL_LINKS.venderCarroUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Falar com a Central de Compras da Velloce para vender veículo"
-                  className="w-full py-4 px-6 rounded-xl bg-accent-primary hover:bg-accent-gold-soft text-bg-primary font-display font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-smooth shadow-lg group/btn cursor-pointer"
+                  className="w-full min-h-[48px] py-3.5 px-6 rounded-full bg-accent-primary hover:bg-accent-gold-soft active:scale-[0.98] text-bg-primary font-display font-bold text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-md group/btn cursor-pointer"
                 >
-                  <DollarSign className="w-5 h-5" />
+                  <DollarSign className="w-4 h-4" />
                   <span>Avaliar Meu Veículo com a Central</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </a>

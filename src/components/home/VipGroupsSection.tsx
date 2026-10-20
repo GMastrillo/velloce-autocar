@@ -98,18 +98,19 @@ export function VipGroupsSection() {
               </div>
 
               {/* Botão de Entrada */}
-              <div className="pt-4 border-t border-white/5">
+              <div className="pt-4 border-t border-white/[0.06]">
                 <a
                   href="https://chat.whatsapp.com/HLF95JSQOSBE7tYARM6pA7"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Entrar no Grupo Gratuito de Linha Leve até R$ 180k"
-                  className="w-full py-4 px-6 rounded-xl bg-tricolore-green hover:bg-emerald-600 text-white font-display font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-smooth shadow-lg group/btn cursor-pointer"
+                  className="w-full min-h-[48px] py-3.5 px-6 rounded-full bg-tricolore-green hover:bg-tricolore-green/90 active:scale-[0.98] text-black font-display font-bold text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-md group/btn cursor-pointer"
                 >
-                  <MessageCircle className="w-5 h-5 fill-current" />
-                  <span>Entrar no Grupo Gratuito →</span>
+                  <MessageCircle className="w-4 h-4 fill-current" />
+                  <span>Entrar no Grupo Gratuito</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </a>
-                <p className="text-center font-mono text-[11px] text-text-muted mt-2">
+                <p className="text-center font-mono text-[11px] text-text-muted mt-2.5">
                   🔒 Entrada gratuita • Sem conversas paralelas • Somente oportunidades reais
                 </p>
               </div>
@@ -170,18 +171,19 @@ export function VipGroupsSection() {
               </div>
 
               {/* Botão de Entrada */}
-              <div className="pt-4 border-t border-white/5">
+              <div className="pt-4 border-t border-white/[0.06]">
                 <a
                   href="https://chat.whatsapp.com/FaDzCJ2bOvn2z75aq3dGyK"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Entrar no Grupo Gratuito de Linha Premium e Superesportivos"
-                  className="w-full py-4 px-6 rounded-xl bg-accent-primary hover:bg-accent-gold-soft text-bg-primary font-display font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-smooth shadow-lg group/btn cursor-pointer"
+                  className="w-full min-h-[48px] py-3.5 px-6 rounded-full bg-accent-primary hover:bg-accent-gold-soft active:scale-[0.98] text-bg-primary font-display font-bold text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-md group/btn cursor-pointer"
                 >
-                  <MessageCircle className="w-5 h-5 fill-current" />
-                  <span>Entrar no Grupo Gratuito →</span>
+                  <MessageCircle className="w-4 h-4 fill-current" />
+                  <span>Entrar no Grupo Gratuito</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </a>
-                <p className="text-center font-mono text-[11px] text-text-muted mt-2">
+                <p className="text-center font-mono text-[11px] text-text-muted mt-2.5">
                   🔒 Entrada gratuita • Sem conversas paralelas • Somente oportunidades reais
                 </p>
               </div>
@@ -240,7 +242,7 @@ export function VipGroupsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Entrar no Grupo de Motos de Alta Cilindrada"
-                className="w-full py-2.5 px-3 rounded-lg bg-white/[0.04] hover:bg-white/10 border border-white/10 text-white font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full min-h-[44px] py-2.5 px-4 rounded-full bg-white/[0.05] hover:bg-white/10 active:scale-[0.98] border border-white/10 text-white font-display font-semibold text-xs flex items-center justify-center gap-1.5 transition-all"
               >
                 <span>Entrar no Grupo</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -276,7 +278,7 @@ export function VipGroupsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Entrar no Grupo de Linha Pesada e Caminhões"
-                className="w-full py-2.5 px-3 rounded-lg bg-white/[0.04] hover:bg-white/10 border border-white/10 text-white font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full min-h-[44px] py-2.5 px-4 rounded-full bg-white/[0.05] hover:bg-white/10 active:scale-[0.98] border border-white/10 text-white font-display font-semibold text-xs flex items-center justify-center gap-1.5 transition-all"
               >
                 <span>Entrar no Grupo</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -312,7 +314,7 @@ export function VipGroupsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Entrar no Grupo de Linha Náutica e Lanchas"
-                className="w-full py-2.5 px-3 rounded-lg bg-white/[0.04] hover:bg-white/10 border border-white/10 text-white font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full min-h-[44px] py-2.5 px-4 rounded-full bg-white/[0.05] hover:bg-white/10 active:scale-[0.98] border border-white/10 text-white font-display font-semibold text-xs flex items-center justify-center gap-1.5 transition-all"
               >
                 <span>Entrar no Grupo</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -348,7 +350,7 @@ export function VipGroupsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Entrar no Grupo de Aviação Executiva"
-                className="w-full py-2.5 px-3 rounded-lg bg-white/[0.04] hover:bg-white/10 border border-white/10 text-white font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full min-h-[44px] py-2.5 px-4 rounded-full bg-white/[0.05] hover:bg-white/10 active:scale-[0.98] border border-white/10 text-white font-display font-semibold text-xs flex items-center justify-center gap-1.5 transition-all"
               >
                 <span>Entrar no Grupo</span>
                 <ArrowRight className="w-3.5 h-3.5" />

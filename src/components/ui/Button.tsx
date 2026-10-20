@@ -12,22 +12,22 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", isLoading, children, disabled, ...props }, ref) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-display font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tricolore-red focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary disabled:opacity-50 disabled:cursor-not-allowed";
+      "inline-flex items-center justify-center font-display font-semibold rounded-full min-h-[44px] transition-all duration-200 ease-[cubic-bezier(0.25,0.1,0.25,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent-primary/30 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer";
 
     const variants = {
-      primary: "bg-tricolore-red text-tricolore-white hover:bg-tricolore-red/90 active:bg-tricolore-red border border-tricolore-red",
-      secondary: "bg-tricolore-green text-tricolore-white hover:bg-tricolore-green/90 active:bg-tricolore-green border border-tricolore-green",
-      outline: "border-2 border-border-active text-text-primary hover:bg-bg-surface hover:border-tricolore-red active:bg-bg-card",
-      ghost: "text-text-primary hover:bg-bg-surface hover:text-tricolore-red active:bg-bg-card",
-      danger: "bg-red-600 text-white hover:bg-red-700 active:bg-red-800 border border-red-600",
-      gold: "bg-accent-gold text-bg-primary hover:bg-accent-gold-soft active:bg-accent-gold border border-accent-gold font-display",
+      primary: "bg-tricolore-red text-tricolore-white hover:bg-tricolore-red/90 border border-tricolore-red shadow-sm",
+      secondary: "bg-tricolore-green text-tricolore-white hover:bg-tricolore-green/90 border border-tricolore-green shadow-sm",
+      outline: "border border-border-active bg-white/[0.03] text-text-primary hover:bg-white/[0.08] hover:border-white/25",
+      ghost: "text-text-primary hover:bg-white/[0.06]",
+      danger: "bg-red-600 text-white hover:bg-red-700 border border-red-600",
+      gold: "bg-accent-gold text-bg-primary hover:bg-accent-gold-soft border border-accent-gold font-display shadow-sm",
     };
 
     const sizes = {
-      sm: "px-3 py-1.5 text-sm gap-1.5",
-      md: "px-5 py-2.5 text-base gap-2",
-      lg: "px-7 py-3 text-lg gap-2.5",
-      xl: "px-10 py-4 text-xl gap-3",
+      sm: "px-4 py-2 text-xs min-h-[38px] gap-1.5",
+      md: "px-5 py-2.5 text-sm gap-2",
+      lg: "px-7 py-3.5 text-base gap-2.5",
+      xl: "px-9 py-4 text-lg gap-3",
     };
 
     return (

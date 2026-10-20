@@ -70,16 +70,17 @@ export function VehicleCard({ vehicle, variant = "default", showCompare = false,
     <article className="group h-full">
       <Link href={`/veiculos/${vehicle.slug}`} className="block h-full">
         <SpotlightCard
-          spotlightColor="rgba(212, 175, 55, 0.12)"
-          className="overflow-hidden h-full flex flex-col p-0 rounded-2xl bg-bg-card border-border-subtle hover:border-white/20 transition-all duration-300"
+          spotlightColor="rgba(212, 175, 55, 0.10)"
+          className="overflow-hidden h-full flex flex-col p-0 rounded-2xl bg-bg-card border-border-subtle hover:border-white/15 transition-all duration-200 shadow-card"
         >
-          <div className="relative aspect-[4/3] overflow-hidden bg-bg-surface">
+          {/* Imagem Limpa (Apple HIG Deference: a foto do carro é a protagonista) */}
+          <div className="relative aspect-[16/10] overflow-hidden bg-bg-surface">
             {primaryImage ? (
               <Image
                 src={primaryImage}
                 alt={`${vehicle.brand} ${vehicle.model} - ${vehicle.year}`}
                 fill
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 loading="lazy"
               />
@@ -89,48 +90,30 @@ export function VehicleCard({ vehicle, variant = "default", showCompare = false,
               </div>
             )}
 
-            <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-20">
+            <div className="absolute top-3 left-3 flex items-center gap-1.5 z-20">
               <Badge category={vehicle.category} size="sm" />
-              {isFeatured && <Badge variant="gold" size="sm">Destaque</Badge>}
             </div>
 
-            <div className="absolute top-3 right-3 flex flex-col items-end gap-1.5 z-20">
+            <div className="absolute top-3 right-3 flex items-center gap-1.5 z-20">
               {vehicle.status === "RESERVED" && <Badge variant="warning" size="sm">Reservado</Badge>}
               {vehicle.status === "SOLD" && <Badge variant="danger" size="sm">Vendido</Badge>}
-              {savingsPercent > 0 && (
-                <span className="sm:hidden px-2 py-0.5 rounded-full bg-black/80 backdrop-blur-md border border-tricolore-red/40 text-tricolore-red font-mono text-[10px] font-bold">
+              {savingsPercent > 0 && vehicle.status === "AVAILABLE" && (
+                <span className="px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-tricolore-green font-mono text-[11px] font-bold tabular-nums">
                   -{savingsPercent}% FIPE
                 </span>
               )}
             </div>
-
-            {vehicle.fipePrice && (
-              <div className="absolute bottom-3 left-3 right-3 z-20 hidden sm:block">
-                <div className="bg-bg-primary/90 backdrop-blur-md px-3 py-2 rounded-lg border border-white/10">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-text-secondary text-xs font-mono uppercase">FIPE</span>
-                    <span className="font-mono font-medium text-text-primary text-xs tabular-nums">{formatCurrency(vehicle.fipePrice)}</span>
-                  </div>
-                  <div className="flex items-center justify-between text-xs mt-0.5">
-                    <span className="text-tricolore-green font-medium font-mono text-[11px] tabular-nums">
-                      Economia: {formatCurrency(fipeSavings)}
-                    </span>
-                    <span className="text-text-muted font-mono text-[11px] tabular-nums">
-                      {savingsPercent}% abaixo
-                    </span>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
 
-          <CardContent className="flex-1 flex flex-col p-4 sm:p-5">
+          <CardContent className="flex-1 flex flex-col p-5">
             <div className="flex items-start justify-between gap-2 mb-3">
               <div>
-                <h3 className="font-display font-semibold text-lg text-text-primary group-hover:text-accent-gold transition-colors">
-                  {vehicle.brand} {vehicle.model}
+                <span className="font-mono text-[11px] uppercase tracking-wider text-text-muted block">
+                  {vehicle.brand} • {vehicle.location}
+                </span>
+                <h3 className="font-display font-bold text-lg text-text-primary group-hover:text-accent-gold transition-colors mt-0.5 leading-snug">
+                  {vehicle.model}
                 </h3>
-                <p className="text-text-secondary text-sm font-mono tabular-nums">{vehicle.year}/{vehicle.yearModel} • {vehicle.color}</p>
               </div>
               {showCompare && (
                 <button
@@ -139,73 +122,46 @@ export function VehicleCard({ vehicle, variant = "default", showCompare = false,
                     e.stopPropagation();
                     onCompare?.(vehicle.id);
                   }}
-                  className="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-bg-surface transition-colors"
+                  className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-text-muted hover:text-text-primary hover:bg-bg-surface transition-colors"
                   aria-label="Comparar"
                 >
-                  <Star className="h-5 w-5" />
+                  <Star className="h-4 w-4" />
                 </button>
               )}
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 mb-4">
-              <span className="flex items-center gap-1.5 px-2.5 py-1 bg-bg-surface rounded-lg text-text-secondary text-xs font-mono">
-                <MapPin className="h-3 w-3" />
-                {vehicle.location}
-              </span>
-              <span className="flex items-center gap-1.5 px-2.5 py-1 bg-bg-surface rounded-lg text-text-secondary text-xs">
-                <Fuel className="h-3 w-3" />
-                {getFuelTypeLabel(vehicle.fuelType)}
-              </span>
-              <span className="flex items-center gap-1.5 px-2.5 py-1 bg-bg-surface rounded-lg text-text-secondary text-xs">
-                <Settings className="h-3 w-3" />
-                {getTransmissionLabel(vehicle.transmission)}
-              </span>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 mb-4 pt-4 border-t border-border-subtle">
-              <div className="flex items-center gap-2 text-sm">
-                <Gauge className="h-4 w-4 text-text-muted" />
-                <span className="font-mono font-medium text-text-primary tabular-nums">{formatNumber(vehicle.mileage)} km</span>
+            {/* Especificações Essenciais em Grade Limpa (Grouped Style) */}
+            <div className="grid grid-cols-3 gap-2 py-3 my-auto border-y border-white/[0.06] text-xs">
+              <div>
+                <span className="text-text-muted text-[10px] font-mono uppercase block">Ano</span>
+                <span className="font-mono font-medium text-text-primary tabular-nums">{vehicle.year}/{vehicle.yearModel}</span>
               </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Calendar className="h-4 w-4 text-text-muted" />
-                <span className="font-mono font-medium text-text-primary tabular-nums">{vehicle.yearModel}</span>
+              <div>
+                <span className="text-text-muted text-[10px] font-mono uppercase block">KM</span>
+                <span className="font-mono font-medium text-text-primary tabular-nums">{formatNumber(vehicle.mileage)}</span>
+              </div>
+              <div>
+                <span className="text-text-muted text-[10px] font-mono uppercase block">Câmbio</span>
+                <span className="font-mono font-medium text-text-primary truncate block">{getTransmissionLabel(vehicle.transmission)}</span>
               </div>
             </div>
-
-            {vehicle.features && vehicle.features.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 mb-4">
-                {vehicle.features.slice(0, 3).map((feature: string) => (
-                  <span key={feature} className="px-2 py-0.5 bg-bg-surface border border-white/5 rounded text-[11px] text-text-secondary">
-                    {feature}
-                  </span>
-                ))}
-                {vehicle.features.length > 3 && (
-                  <span className="px-2 py-0.5 bg-bg-surface border border-white/5 rounded text-[11px] text-text-muted font-mono tabular-nums">
-                    +{vehicle.features.length - 3}
-                  </span>
-                )}
-              </div>
-            )}
-
-            {vehicle.description && (
-              <p className="text-text-secondary text-sm line-clamp-2 mb-4 flex-1 leading-relaxed">{vehicle.description}</p>
-            )}
           </CardContent>
 
-          <CardFooter className="px-4 pb-4 sm:px-5 sm:pb-5 pt-0">
-            <div className="flex items-center justify-between w-full pt-4 border-t border-white/5">
+          <CardFooter className="px-5 pb-5 pt-0 mt-0 border-0">
+            <div className="flex items-center justify-between w-full pt-1">
               <div>
-                <span className="font-mono font-bold text-xl text-text-primary tabular-nums">{formatCurrency(vehicle.price)}</span>
                 {vehicle.fipePrice && (
-                  <p className="text-[11px] font-mono text-tricolore-green font-medium mt-0.5 tabular-nums">
-                    {Math.round(((Number(vehicle.fipePrice) - Number(vehicle.price)) / Number(vehicle.fipePrice)) * 100)}% abaixo da FIPE
-                  </p>
+                  <span className="font-mono text-[11px] text-text-muted line-through block tabular-nums">
+                    FIPE: {formatCurrency(vehicle.fipePrice)}
+                  </span>
                 )}
+                <span className="font-mono font-extrabold text-xl text-text-primary tabular-nums">
+                  {formatCurrency(vehicle.price)}
+                </span>
               </div>
-              <Button size="sm" className="font-mono text-xs uppercase tracking-wider">
-                Ver Dossiê
-              </Button>
+              <span className="inline-flex items-center justify-center px-4 min-h-[40px] rounded-full bg-white/[0.06] group-hover:bg-accent-primary group-hover:text-bg-primary text-text-primary font-display font-semibold text-xs transition-all">
+                Ver Dossiê →
+              </span>
             </div>
           </CardFooter>
         </SpotlightCard>

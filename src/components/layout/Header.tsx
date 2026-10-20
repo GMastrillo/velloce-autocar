@@ -83,36 +83,34 @@ export function Header() {
 
           <div className="flex items-center gap-3 sm:gap-4">
 
-            <div className="hidden sm:flex items-center gap-3 px-4 py-2 bg-bg-card border border-border-subtle rounded-lg">
-              <Phone className="h-4 w-4 text-tricolore-green" />
-              <a
-                href="tel:+5554996827149"
-                aria-label="Ligar para o telefone (54) 99682-7149"
-                className="font-mono text-sm font-medium text-text-primary hover:text-tricolore-green transition-smooth"
-              >
-                (54) 99682-7149
-              </a>
-            </div>
+            <a
+              href="tel:+5554996827149"
+              aria-label="Ligar para o telefone (54) 99682-7149"
+              className="hidden sm:inline-flex items-center gap-2.5 px-4 min-h-[44px] bg-bg-card border border-border-subtle rounded-full font-mono text-xs font-medium text-text-primary hover:border-white/20 active:scale-[0.98] transition-all"
+            >
+              <Phone className="h-3.5 w-3.5 text-tricolore-green" />
+              <span>(54) 99682-7149</span>
+            </a>
 
             <a
               href={COMMERCIAL_LINKS.comprarCarroUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Falar diretamente com a Velloce AutoCar pelo WhatsApp"
-              className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-tricolore-green text-tricolore-white font-medium rounded-lg hover:bg-tricolore-green/90 transition-smooth"
+              className="hidden sm:inline-flex items-center gap-2 px-5 min-h-[44px] bg-tricolore-green text-black font-display font-bold text-xs uppercase tracking-wider rounded-full hover:bg-tricolore-green/90 active:scale-[0.98] transition-all shadow-sm"
             >
-              <Zap className="h-4 w-4" />
-              WhatsApp
+              <Zap className="h-3.5 w-3.5 fill-current" />
+              <span>WhatsApp</span>
             </a>
 
             <button
-              className="lg:hidden p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-surface transition-smooth"
+              className="lg:hidden flex items-center justify-center w-11 h-11 rounded-full text-text-secondary hover:text-text-primary hover:bg-bg-card active:scale-[0.95] transition-all"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
               aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>

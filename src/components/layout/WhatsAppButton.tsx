@@ -143,17 +143,16 @@ export function WhatsAppButton({ vehicleTitle, vehiclePrice, vehicleSlug }: What
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "flex items-center gap-2.5 px-4 sm:px-5 py-3.5 rounded-full shadow-2xl transition-all duration-300 group",
-          "bg-tricolore-green hover:bg-emerald-600 text-white font-medium",
-          isOpen ? "ring-4 ring-tricolore-green/30" : "hover:scale-105"
+          "flex items-center gap-2.5 px-5 min-h-[48px] rounded-full shadow-floating transition-all duration-200 ease-[cubic-bezier(0.25,0.1,0.25,1)] active:scale-[0.97] group cursor-pointer",
+          "bg-tricolore-green hover:bg-tricolore-green/90 text-black font-semibold",
+          isOpen ? "ring-4 ring-tricolore-green/30" : "hover:scale-[1.02]"
         )}
         aria-label="Abrir canais de WhatsApp"
       >
-        <MessageCircle className="w-6 h-6 fill-current animate-pulse" />
-        <span className="font-display font-bold text-sm tracking-wide">
-          {isOpen ? "Fechar" : "WhatsApp Velloce"}
+        <MessageCircle className="w-5 h-5 fill-current" />
+        <span className="font-display font-bold text-sm tracking-tight">
+          {isOpen ? "Fechar" : "WhatsApp"}
         </span>
-        <span className="flex h-2 w-2 rounded-full bg-white animate-ping" />
       </button>
     </div>
   );

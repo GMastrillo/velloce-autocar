@@ -24,11 +24,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={inputId}
           className={cn(
-            "w-full px-4 py-3 bg-bg-card border border-border-subtle text-text-primary placeholder-text-muted",
-            "rounded-lg transition-smooth",
-            "focus:border-tricolore-red focus:ring-2 focus:ring-tricolore-red/20 focus:outline-none",
+            "w-full min-h-[44px] px-4 py-2.5 bg-bg-surface border border-border-subtle text-text-primary placeholder-text-muted text-[15px]",
+            "rounded-xl transition-all duration-200 ease-[cubic-bezier(0.25,0.1,0.25,1)]",
+            "focus:border-accent-primary focus:ring-4 focus:ring-accent-primary/20 focus:outline-none",
             "disabled:bg-bg-surface disabled:cursor-not-allowed disabled:opacity-50",
-            error && "border-tricolore-red focus:border-tricolore-red focus:ring-tricolore-red/20",
+            error && "border-tricolore-red focus:border-tricolore-red focus:ring-tricolore-red/25",
             className
           )}
           aria-invalid={error ? "true" : "false"}
@@ -73,11 +73,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           id={inputId}
           className={cn(
-            "w-full px-4 py-3 bg-bg-card border border-border-subtle text-text-primary placeholder-text-muted",
-            "rounded-lg transition-smooth resize-y min-h-[100px]",
-            "focus:border-tricolore-red focus:ring-2 focus:ring-tricolore-red/20 focus:outline-none",
+            "w-full px-4 py-3 bg-bg-surface border border-border-subtle text-text-primary placeholder-text-muted text-[15px]",
+            "rounded-xl transition-all duration-200 ease-[cubic-bezier(0.25,0.1,0.25,1)] resize-y min-h-[100px]",
+            "focus:border-accent-primary focus:ring-4 focus:ring-accent-primary/20 focus:outline-none",
             "disabled:bg-bg-surface disabled:cursor-not-allowed disabled:opacity-50",
-            error && "border-tricolore-red focus:border-tricolore-red focus:ring-tricolore-red/20",
+            error && "border-tricolore-red focus:border-tricolore-red focus:ring-tricolore-red/25",
             className
           )}
           aria-invalid={error ? "true" : "false"}
@@ -124,11 +124,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           ref={ref}
           id={selectId}
           className={cn(
-            "w-full px-4 py-3 bg-bg-card border border-border-subtle text-text-primary",
-            "rounded-lg transition-smooth appearance-none",
-            "focus:border-tricolore-red focus:ring-2 focus:ring-tricolore-red/20 focus:outline-none",
+            "w-full min-h-[44px] px-4 py-2.5 bg-bg-surface border border-border-subtle text-text-primary text-[15px]",
+            "rounded-xl transition-all duration-200 ease-[cubic-bezier(0.25,0.1,0.25,1)] appearance-none",
+            "focus:border-accent-primary focus:ring-4 focus:ring-accent-primary/20 focus:outline-none",
             "disabled:bg-bg-surface disabled:cursor-not-allowed disabled:opacity-50",
-            error && "border-tricolore-red focus:border-tricolore-red focus:ring-tricolore-red/20",
+            error && "border-tricolore-red focus:border-tricolore-red focus:ring-tricolore-red/25",
             className
           )}
           aria-invalid={error ? "true" : "false"}
