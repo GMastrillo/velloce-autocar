@@ -28,8 +28,9 @@ export function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-white font-display">Navegação</h4>
             <ul className="space-y-2 text-xs">
               <li><a href="#estoque" className="hover:text-white transition-colors">Estoque Completo</a></li>
+              <li><a href="#curadoria" className="hover:text-white transition-colors">Curadoria & Neni</a></li>
+              <li><a href="#grupos-vip" className="hover:text-white transition-colors">Grupos VIP WhatsApp</a></li>
               <li><a href="#estilos" className="hover:text-white transition-colors">Categorias de Veículos</a></li>
-              <li><a href="#destaques" className="hover:text-white transition-colors">Destaques da Semana</a></li>
               <li><a href="#simulador" className="hover:text-white transition-colors">Simulador de Financiamento</a></li>
               <li><a href="#showroom" className="hover:text-white transition-colors">Showroom & Hubs</a></li>
               <li><a href="#troca" className="hover:text-white transition-colors">Avaliação de Usado na Troca</a></li>

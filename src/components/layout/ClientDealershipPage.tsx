@@ -8,7 +8,6 @@ import CuradoriaMarcosPaniz from "@/components/sections/CuradoriaMarcosPaniz";
 import RepasseEngineering from "@/components/sections/RepasseEngineering";
 import VipGroupsSection from "@/components/sections/VipGroupsSection";
 import StyleSelector from "@/components/sections/StyleSelector";
-import FeaturedCars from "@/components/sections/FeaturedCars";
 import FinanceSimulator from "@/components/sections/FinanceSimulator";
 import ShowroomTour from "@/components/sections/ShowroomTour";
 import SocialProof from "@/components/sections/SocialProof";
@@ -46,25 +45,22 @@ export default function ClientDealershipPage() {
         {/* 6. Style Selector ("Encontre pelo seu estilo") */}
         <StyleSelector />
 
-        {/* 7. Featured Cars ("Destaques da semana") */}
-        <FeaturedCars onSelectCar={(car) => setSelectedCar(car)} />
-
-        {/* 8. Finance Simulator ("Faça as contas antes de decidir") */}
+        {/* 7. Finance Simulator ("Faça as contas antes de decidir") */}
         <FinanceSimulator />
 
-        {/* 9. Showroom Experience ("A loja por dentro") */}
+        {/* 8. Showroom Experience ("A loja por dentro") */}
         <ShowroomTour />
 
-        {/* 10. Social Proof ("Quem compra, faz parte da nossa história") */}
+        {/* 9. Social Proof ("Quem compra, faz parte da nossa história") */}
         <SocialProof />
 
-        {/* 11. Full Inventory with Dynamic Filters ("Um estoque, várias rotas") */}
+        {/* 10. Full Inventory with Dynamic Filters ("Um estoque, várias rotas") */}
         <InventorySection onSelectCar={(car) => setSelectedCar(car)} />
 
-        {/* 12. Trade-In Evaluation ("Tem um carro para dar na troca?") */}
+        {/* 11. Trade-In Evaluation ("Tem um carro para dar na troca?") */}
         <TradeInSection />
 
-        {/* 13. FAQ ("Respondemos suas dúvidas") */}
+        {/* 12. FAQ ("Respondemos suas dúvidas") */}
         <FAQSection />
       </main>
 
