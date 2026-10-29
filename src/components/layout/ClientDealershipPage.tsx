@@ -4,6 +4,9 @@ import { useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Porsche360Hero from "@/components/sections/Porsche360Hero";
 import HeroSection from "@/components/sections/HeroSection";
+import CuradoriaMarcosPaniz from "@/components/sections/CuradoriaMarcosPaniz";
+import RepasseEngineering from "@/components/sections/RepasseEngineering";
+import VipGroupsSection from "@/components/sections/VipGroupsSection";
 import StyleSelector from "@/components/sections/StyleSelector";
 import FeaturedCars from "@/components/sections/FeaturedCars";
 import FinanceSimulator from "@/components/sections/FinanceSimulator";
@@ -31,28 +34,37 @@ export default function ClientDealershipPage() {
         {/* 2. Interactive Model Switcher (GT3 RS, Cayenne Turbo GT, Taycan Turbo S) */}
         <HeroSection />
 
-        {/* 3. Style Selector ("Encontre pelo seu estilo") */}
+        {/* 3. Curadoria Assinada Marcos Paniz (o Neni) & Comprar/Vender */}
+        <CuradoriaMarcosPaniz />
+
+        {/* 4. Engenharia de Liquidez (Como garantimos até 40% abaixo da FIPE com laudo 100%) */}
+        <RepasseEngineering />
+
+        {/* 5. Grupos VIP Silenciosos no WhatsApp (Linha Leve, Premium, Motos, Pesada, Náutica, Aviação) */}
+        <VipGroupsSection />
+
+        {/* 6. Style Selector ("Encontre pelo seu estilo") */}
         <StyleSelector />
 
-        {/* 4. Featured Cars ("Destaques da semana") */}
+        {/* 7. Featured Cars ("Destaques da semana") */}
         <FeaturedCars onSelectCar={(car) => setSelectedCar(car)} />
 
-        {/* 5. Finance Simulator ("Faça as contas antes de decidir") */}
+        {/* 8. Finance Simulator ("Faça as contas antes de decidir") */}
         <FinanceSimulator />
 
-        {/* 6. Showroom Experience ("A loja por dentro") */}
+        {/* 9. Showroom Experience ("A loja por dentro") */}
         <ShowroomTour />
 
-        {/* 7. Social Proof ("Quem compra, faz parte da nossa história") */}
+        {/* 10. Social Proof ("Quem compra, faz parte da nossa história") */}
         <SocialProof />
 
-        {/* 8. Full Inventory with Dynamic Filters ("Um estoque, várias rotas") */}
+        {/* 11. Full Inventory with Dynamic Filters ("Um estoque, várias rotas") */}
         <InventorySection onSelectCar={(car) => setSelectedCar(car)} />
 
-        {/* 9. Trade-In Evaluation ("Tem um carro para dar na troca?") */}
+        {/* 12. Trade-In Evaluation ("Tem um carro para dar na troca?") */}
         <TradeInSection />
 
-        {/* 10. FAQ ("Respondemos suas dúvidas") */}
+        {/* 13. FAQ ("Respondemos suas dúvidas") */}
         <FAQSection />
       </main>
 

@@ -26,10 +26,11 @@ export default function Navbar({ show = false }: NavbarProps) {
 
   const navLinks = [
     { label: "Estoque", href: "#estoque" },
+    { label: "Curadoria", href: "#curadoria" },
+    { label: "Grupos VIP", href: "#grupos-vip" },
     { label: "Categorias", href: "#estilos" },
     { label: "Financiamento", href: "#simulador" },
     { label: "O Showroom", href: "#showroom" },
-    { label: "Entregas VIP", href: "#entregas" },
     { label: "Avaliação", href: "#troca" },
   ];
 
