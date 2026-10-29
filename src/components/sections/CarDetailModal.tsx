@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { X, MessageSquare, ShieldCheck, CheckCircle2, Gauge, Calendar, Cog, Flame } from "lucide-react";
@@ -14,6 +15,31 @@ interface CarDetailModalProps {
 }
 
 export default function CarDetailModal({ car, onClose }: CarDetailModalProps) {
+  useEffect(() => {
+    if (!car) return;
+
+    // Bloquear scroll do body e html com compensação de layout shift
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    // Fechar com tecla ESC
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [car, onClose]);
+
   if (!car) return null;
 
   const handleReserve = () => {
@@ -34,7 +60,17 @@ export default function CarDetailModal({ car, onClose }: CarDetailModalProps) {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-xl">
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-xl"
+        onWheel={(e) => e.stopPropagation()}
+        onTouchMove={(e) => {
+          // Permite scroll se for dentro do container scrollable
+          const target = e.target as HTMLElement;
+          if (!target.closest(".modal-scrollable-content")) {
+            e.preventDefault();
+          }
+        }}
+      >
         {/* Backdrop click */}
         <div className="fixed inset-0" onClick={onClose} />
 
@@ -55,7 +91,10 @@ export default function CarDetailModal({ car, onClose }: CarDetailModalProps) {
           </button>
 
           {/* Scrollable Content */}
-          <div className="overflow-y-auto p-6 sm:p-8 space-y-8">
+          <div
+            className="modal-scrollable-content overflow-y-auto p-6 sm:p-8 space-y-8 overscroll-contain"
+            style={{ overscrollBehavior: "contain" }}
+          >
             {/* Top Media */}
             <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-white/10">
               <Image
