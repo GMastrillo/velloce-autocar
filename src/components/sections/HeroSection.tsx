@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, MessageSquare, ArrowRight } from "lucide-react";
@@ -61,18 +61,36 @@ const HERO_MODELS: HeroCar[] = [
 
 export default function HeroSection() {
   const [activeCarIndex, setActiveCarIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const current = HERO_MODELS[activeCarIndex];
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setActiveCarIndex((prev) => (prev + 1) % HERO_MODELS.length);
-  };
+  }, []);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setActiveCarIndex((prev) => (prev - 1 + HERO_MODELS.length) % HERO_MODELS.length);
-  };
+  }, []);
+
+  // Transição automática a cada 5 segundos (pausa quando o usuário passar o mouse ou interagir)
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      handleNext();
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [handleNext, isPaused]);
 
   return (
-    <section className="relative min-h-[92vh] w-full bg-black flex flex-col justify-between overflow-hidden py-16 px-4 sm:px-6 lg:px-8 border-b border-white/5">
+    <section
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
+      className="relative min-h-[92vh] w-full bg-black flex flex-col justify-between overflow-hidden py-16 px-4 sm:px-6 lg:px-8 border-b border-white/5"
+    >
       {/* Background Spotlight / Ambience */}
       <div className="absolute inset-0 bg-radial-[circle_at_50%_40%] from-red-950/20 via-black to-black pointer-events-none" />
 
